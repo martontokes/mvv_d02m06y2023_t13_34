@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-{ const useragent = require('usergent');
-
 export default function App() {
 
   const [isWelcome, setWelcome] = useState(true);
