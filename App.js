@@ -5,6 +5,15 @@ export default function App() {
   const [isWelcome, setWelcome] = useState(true);
   const [isEnglish, setEnglish] = useState(undefined);
   const [page, setPage] = useState(0);
+  const [userAgent, setUserAgent] = useState('');
+
+  useEffect(() => {
+    setUserAgent(window.navigator.userAgent);
+  }, []);
+
+// useEffect(() => {
+//        you may use userAgent here              //
+//  }, [userAgent]); //
 
   return (
     <>
