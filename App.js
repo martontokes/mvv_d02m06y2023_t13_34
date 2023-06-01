@@ -7,6 +7,7 @@ export default function App() {
   const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
 
+  let languageChanger;
   let componentToRender;
   let languageChangerContainer;
 
@@ -23,8 +24,8 @@ export default function App() {
     }
 
   return (
-
-    <>
+    <div>
+      {checkIsMobile}
       {componentToRender}
       {languageChangerContainer}
       
