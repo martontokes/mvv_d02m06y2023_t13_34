@@ -18,11 +18,11 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
   };
 
   const setEnglish = () => {
-    setLanguage('English');
+    setLanguage('english');
   };
 
   const setChinese = () => {
-    setLanguage('Chinese');
+    setLanguage('chinese');
   };
 
   return (
@@ -38,11 +38,15 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 }
 
 
-
-// function ContentScreen() {
-
-// }
-
+function ContentScreen() {
+  if (isMobile) {
+    if (language === 'chinese') {
+      return <button>中國人</button>;
+    } else if (language === 'english') {
+      return <button>English</button>;
+    }
+  }
+}
 
 
 function EnglishMenu({ setPage }) {
@@ -85,4 +89,8 @@ function ChineseMenu({ setPage }) {
       <button onClick={changeContent(6)}>家居/公共</button>
     </>
   );
+}
+
+function PageIndicator({ page }) {
+
 }
