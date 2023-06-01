@@ -24,7 +24,8 @@ export default function App() {
     }
 
   return (
-    <div>
+    
+    <>
       {checkIsMobile}
       {componentToRender}
       {languageChangerContainer}
