@@ -4,7 +4,7 @@ import { isMobile } from 'react-device-detect';
 export default function App() {
 
   const [language, setLanguage] = useState('');
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
 
 }
@@ -84,13 +84,13 @@ function EnglishMenu({ setPage }) {
     <>
       <h2>metro via virtual</h2>
       <h3>A virtual exhibition from Hong Kong</h3>
-      <button onClick={changeContent(1)}>curatorial statement</button>
-      <button onClick={changeContent(2)}>essay about the exhibition</button>
-      <button onClick={changeContent(3)}>Autosave: Redoubt</button>
-      <button onClick={ChangeContent(4)}>Confidential Records: Dual Metropolitans</button>
-      <button onClick={changeContent(5)}>Illumination</button>
-      <button onClick={changeContent(6)}>Butterflies on the Wheel</button>
-      <button onClick={changeContent(7)}>Domestik/Publik</button>
+      <button onClick={changeContent('curatorial')}>curatorial statement</button>
+      <button onClick={changeContent('essay')}>essay about the exhibition</button>
+      <button onClick={changeContent('autosave')}>Autosave: Redoubt</button>
+      <button onClick={ChangeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
+      <button onClick={changeContent('illumination')}>Illumination</button>
+      <button onClick={changeContent('butterflies')}>Butterflies on the Wheel</button>
+      <button onClick={changeContent('domestik')}>Domestik/Publik</button>
     </>
   );
 }
@@ -106,12 +106,12 @@ function ChineseMenu({ setPage }) {
     <>
       <h2>虛擬都會</h2>
       <h3>虛擬都會</h3>
-      <button onClick={changeContent(1)}>策展論</button>
-      <button onClick={changeContent(2)}>自動存檔：堡壘</button>
-      <button onClick={ChangeContent(3)}>機密錄：雙城</button>
-      <button onClick={changeContent(4)}>啟示</button>
-      <button onClick={changeContent(5)}>黃淑賢</button>
-      <button onClick={changeContent(6)}>家居/公共</button>
+      <button onClick={changeContent('curatorial')}>策展論</button>
+      <button onClick={changeContent('autosave')}>自動存檔：堡壘</button>
+      <button onClick={ChangeContent('confidential')}>機密錄：雙城</button>
+      <button onClick={changeContent('illumination')}>啟示</button>
+      <button onClick={changeContent('butterflies')}>黃淑賢</button>
+      <button onClick={changeContent('domestik')}>家居/公共</button>
     </>
   );
 }
@@ -129,7 +129,12 @@ function Content( { page, language } ) {
   if (language === 'english') {
 
     switch(page) {
+
       case 1:
+
+      
+
+
       case 2:
       case 3:
       case 4:
@@ -142,8 +147,8 @@ function Content( { page, language } ) {
   } else {
 
     switch(page) {
+
       case 1:
-      case 2:
       case 3:
       case 4:
       case 5:
