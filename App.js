@@ -9,8 +9,6 @@ export default function App() {
 
 }
 
-
-
 function WelcomeScreen({ setWelcome, setLanguage }) {
 
   const enterSite = () => {
@@ -40,16 +38,17 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 
 function ContentScreen() {
 
-
   return (
     
-  {isMobile && (<BurgerMenu /><PageIndicator />)}
-  {!isMobile && (<LanguageButton />)}
-
-
-
+  { isMobile && (<BurgerMenu /><PageIndicator />) }
+  { !isMobile && (<LanguageButton />) }
+  { if (!isMobile && (language === 'chinese')) {
+      (<ChineseMenu />) 
+    } else if (!isMobile && (language === 'english')) {
+      (<EnglishMenu />)
+    }
+  }
   );
-
 }
 
 function LanguageButton() {
