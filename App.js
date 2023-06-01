@@ -9,6 +9,7 @@ export default function App() {
 
   let componentToRender;
   let checkIsMobile;
+  let my;
 
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
@@ -28,6 +29,7 @@ export default function App() {
       {componentToRender}
     </div>
   );
+
 
   }
 
