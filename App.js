@@ -16,7 +16,7 @@ export default function App() {
     componentToRender = <ContentScreen language={language} setPage={setPage} />;
   }
 
-    if (isMobile ) {
+    if (isMobile) {
       checkIsMobile = <p>It is a mobile device</p>
     } else {
       checkIsMobile = <p>It is not a mobile device</p>
