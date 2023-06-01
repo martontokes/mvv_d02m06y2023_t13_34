@@ -8,15 +8,23 @@ export default function App() {
   const [isWelcome, setWelcome] = useState(true);
 
   let componentToRender;
+  let checkIsMobile;
 
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
-    componentToRender = <ContentScreen />;
+    componentToRender = <ContentScreen language={language} setPage={setPage} />;
   }
+
+    if (isMobile) {
+      checkIsMobile = <p>It is a mobile device</p>
+    } else {
+      checkIsMobile = <p>It is not a mobile device</p>
+    }
 
   return (
     <div>
+      {checkIsMobile}
       {componentToRender}
     </div>
   );
@@ -28,32 +36,32 @@ export default function App() {
 
 function WelcomeScreen({ setWelcome, setLanguage }) {
 
-  const enterSite = () => {
-    setWelcome(false);
-  };
+    const enterSite = () => {
+      setWelcome(false);
+    };
+  
+    const setEnglish = () => {
+      setLanguage('english');
+    };
+  
+    const setChinese = () => {
+      setLanguage('chinese');
+    };
+  
+    return (
+      <>
+        <h1>metro via virtual</h1>
+        <h1>a virtual exhibition from Hong Kong</h1>
+        <button onClick={() => { setEnglish(); enterSite(); }}>enter exhibition</button>
+        <h1>虛擬都會</h1>
+        <h1>來自香港的線上展覽</h1>
+        <button onClick={() => { setChinese(); enterSite(); }}>進入展覽</button>
+      </>
+    );
+  }
 
-  const setEnglish = () => {
-    setLanguage('english');
-  };
 
-  const setChinese = () => {
-    setLanguage('chinese');
-  };
-
-  return (
-    <>
-      <h1>metro via virtual</h1>
-      <h1>a virtual exhibition from Hong Kong</h1>
-      <button onClick={ () => { setEnglish; enterSite } }>enter exhibition</button>
-      <h1>虛擬都會</h1>
-      <h1>來自香港的線上展覽</h1>
-      <button onClick={ () => { setChinese; enterSite } }>進入展覽</button>
-    </>
-  );
-}
-
-
-function ContentScreen({ page }) {
+function ContentScreen({ page, language, setPage }) {
   let conditionalMenu;
   if (isMobile) {
     conditionalMenu = (
@@ -63,11 +71,11 @@ function ContentScreen({ page }) {
       </>
     );
   } else {
-    conditionalMenu = <LanguageButton />;
+    conditionalMenu = <LanguageButton language={language} setLanguage={setLanguage} />;
     if (language === 'chinese') {
-      conditionalMenu = <ChineseMenu />;
+      conditionalMenu = <ChineseMenu setPage={setPage} />;
     } else if (language === 'english') {
-      conditionalMenu = <EnglishMenu />;
+      conditionalMenu = <EnglishMenu setPage={setPage} />;
     }
   }
 
@@ -79,7 +87,7 @@ function ContentScreen({ page }) {
   );
 }
 
-function LanguageButton() {
+function LanguageButton({language, setLanguage}) {
 
   let buttonElement = null;
 
@@ -98,7 +106,7 @@ function LanguageButton() {
 
 function BurgerMenu() {
   return (
-    <button></button>
+    <button>BurgerButton Content</button>
   )
 }
 
@@ -115,7 +123,7 @@ function EnglishMenu({ setPage }) {
       <button onClick={changeContent('curatorial')}>curatorial statement</button>
       <button onClick={changeContent('essay')}>essay about the exhibition</button>
       <button onClick={changeContent('autosave')}>Autosave: Redoubt</button>
-      <button onClick={ChangeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
+      <button onClick={changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
       <button onClick={changeContent('illumination')}>Illumination</button>
       <button onClick={changeContent('butterflies')}>Butterflies on the Wheel</button>
       <button onClick={changeContent('domestik')}>Domestik/Publik</button>
@@ -136,7 +144,7 @@ function ChineseMenu({ setPage }) {
       <h3>虛擬都會</h3>
       <button onClick={changeContent('curatorial')}>策展論</button>
       <button onClick={changeContent('autosave')}>自動存檔：堡壘</button>
-      <button onClick={ChangeContent('confidential')}>機密錄：雙城</button>
+      <button onClick={changeContent('confidential')}>機密錄：雙城</button>
       <button onClick={changeContent('illumination')}>啟示</button>
       <button onClick={changeContent('butterflies')}>黃淑賢</button>
       <button onClick={changeContent('domestik')}>家居/公共</button>
