@@ -39,15 +39,32 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 
 
 function ContentScreen() {
-  if (isMobile) {
-    if (language === 'chinese') {
-      return <button>中國人</button>;
-    } else if (language === 'english') {
-      return <button>English</button>;
-    }
-  }
+
+
+  return (
+    
+  {isMobile ? <LanguageButton /> : null}
+
+  );
+
 }
 
+function LanguageButton() {
+
+  let buttonElement = null;
+
+    if (language === 'chinese') {
+      buttonElement = <button>中國人</button>;
+    } else if (language === 'english') {
+      buttonElement = <button>English</button>;
+    }
+
+  return (
+    <>
+      {buttonElement}
+    </>
+  );
+}
 
 function EnglishMenu({ setPage }) {
 
