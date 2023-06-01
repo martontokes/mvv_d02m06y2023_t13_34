@@ -8,7 +8,6 @@ export default function App() {
   const [isWelcome, setWelcome] = useState(true);
 
   let componentToRender;
-  let languageChangerContainer;
 
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
@@ -16,27 +15,18 @@ export default function App() {
     componentToRender = <ContentScreen language={language} setPage={setPage} />;
   }
 
-    if (isMobile) {
-      languageChangerContainer = <LanguageButton />
-    } else {
-      languageChangerContainer = null;
-    }
-
   return (
 
     <>
-
+    
+      <LanguageButton />
       {componentToRender}
-      {languageChangerContainer}
       
     </>
   );
 
 
   }
-
-
-
 
 function WelcomeScreen({ setWelcome, setLanguage }) {
 
@@ -66,7 +56,9 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 
 
 function ContentScreen({ page, language, setPage, setLanguage }) {
+
   let conditionalMenu;
+
   if (isMobile) {
     conditionalMenu = (
       <>
