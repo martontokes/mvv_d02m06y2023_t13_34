@@ -8,8 +8,7 @@ export default function App() {
   const [isWelcome, setWelcome] = useState(true);
 
   let componentToRender;
-  let checkIsMobile;
-  let my;
+  let languageChangerContainer;
 
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
@@ -18,16 +17,18 @@ export default function App() {
   }
 
     if (isMobile) {
-      checkIsMobile = <p>It is a mobile device</p>
+      languageChangerContainer = <LanguageButton />
     } else {
-      checkIsMobile = <p>It is not a mobile device</p>
+      languageChangerContainer = null;
     }
 
   return (
-    <div>
-      {checkIsMobile}
+
+    <>
       {componentToRender}
-    </div>
+      {languageChangerContainer}
+      
+    </>
   );
 
 
