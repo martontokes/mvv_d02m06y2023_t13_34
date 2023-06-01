@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { isMobile }, from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 export default function App() {
 
@@ -116,6 +116,42 @@ function ChineseMenu({ setPage }) {
   );
 }
 
+
+
 function PageIndicator({ page }) {
+
+}
+
+
+
+function Content( { page, language } ) {
+
+  if (language === 'english') {
+
+    switch(page) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+      case 7:   
+
+    }
+
+  } else {
+
+    switch(page) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+      case 7:     
+
+    }
+
+  }
 
 }
