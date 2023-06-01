@@ -7,19 +7,21 @@ export default function App() {
   const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
 
-    return (
+  let componentToRender;
 
-       if (isWelcome) {
+  if (isWelcome) {
+    componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
+  } else {
+    componentToRender = <ContentScreen />;
+  }
 
-        <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />
+  return (
+    <div>
+      {componentToRender}
+    </div>
+  );
 
-        } else {
-
-        <ContentScreen />
-
-        }
-      }
-
+  }
 
 
 
@@ -51,26 +53,29 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 }
 
 
-function ContentScreen({page}) {
-
-  return (
-
-   <> 
-
-  { isMobile && ( <> <BurgerMenu /> <PageIndicator /> </> ) }
-  { !isMobile && ( <LanguageButton /> ) }
-  { if (!isMobile && (language === 'chinese')) {
-      (<ChineseMenu />) 
-    } else if (!isMobile && (language === 'english')) {
-      (<EnglishMenu />)
+function ContentScreen({ page }) {
+  let conditionalMenu;
+  if (isMobile) {
+    conditionalMenu = (
+      <>
+        <BurgerMenu />
+        <PageIndicator />
+      </>
+    );
+  } else {
+    conditionalMenu = <LanguageButton />;
+    if (language === 'chinese') {
+      conditionalMenu = <ChineseMenu />;
+    } else if (language === 'english') {
+      conditionalMenu = <EnglishMenu />;
     }
   }
 
-  <Content page={page} />
-
-
-  </>
-
+  return (
+    <>
+      {conditionalMenu}
+      <Content page={page} />
+    </>
   );
 }
 
@@ -314,5 +319,7 @@ function Content( { page, language } ) {
       )
 
     }
+
+  }
 
 }
