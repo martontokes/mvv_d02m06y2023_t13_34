@@ -43,7 +43,10 @@ function ContentScreen() {
 
   return (
     
-  {isMobile ? <LanguageButton /> : null}
+  {isMobile && (<BurgerMenu /><PageIndicator />)}
+  {!isMobile && (<LanguageButton />)}
+
+
 
   );
 
@@ -64,6 +67,12 @@ function LanguageButton() {
       {buttonElement}
     </>
   );
+}
+
+function BurgerMenu() {
+  return (
+    <button></button>
+  )
 }
 
 function EnglishMenu({ setPage }) {
