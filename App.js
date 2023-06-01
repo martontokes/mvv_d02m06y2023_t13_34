@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import {isMobile} from 'react-device-detect';
+
 
 export default function App() {
 
@@ -6,14 +8,6 @@ export default function App() {
   const [isEnglish, setEnglish] = useState(undefined);
   const [page, setPage] = useState(0);
   const [userAgent, setUserAgent] = useState('');
-
-  useEffect(() => {
-    setUserAgent(window.navigator.userAgent);
-  }, []);
-
-// useEffect(() => {
-//        you may use userAgent here              //
-//  }, [userAgent]); //
 
   return (
     <>
@@ -55,9 +49,23 @@ function Welcome({ setWelcome, setEnglish }) {
 
 function Content({ isEnglish, page, setPage }) {
   if (isEnglish) {
-    return <English page={page} setPage={setPage} />;
+
+    return 
+    
+    <>
+    <button></button>
+    <English page={page} setPage={setPage} />;
+    </>
+
   } else {
-    return <Chinese page={page} setPage={setPage} />;
+
+    return 
+    
+    <>
+    <button></button>
+    <Chinese page={page} setPage={setPage} />;
+    </>
+
   }
 }
 
