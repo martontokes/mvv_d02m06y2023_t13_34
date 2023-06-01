@@ -20,6 +20,11 @@ export default function App() {
   } else {
       languageChanger = null;
   }
+  if (isMobile) {
+      languageChanger = <LanguageButton />
+  } else {
+      languageChanger = null;
+  }
 
   return (
     <div>
