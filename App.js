@@ -7,8 +7,7 @@ export default function App() {
   const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
 
-  let componentToRender;
-  let checkIsMobile;
+  let languageChanger;
 
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
@@ -16,15 +15,15 @@ export default function App() {
     componentToRender = <ContentScreen language={language} setPage={setPage} />;
   }
 
-    if (isMobile) {
-      checkIsMobile = <p>It is a mobile device</p>
-    } else {
-      checkIsMobile = <p>It is not a mobile device</p>
-    }
+  if (isMobile) {
+      languageChanger = <LanguageButton />
+  } else {
+      languageChanger = null;
+  }
 
   return (
     <div>
-      {checkIsMobile}
+      {languageChanger}
       {componentToRender}
     </div>
   );
