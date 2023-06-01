@@ -18,8 +18,7 @@ export default function App() {
   return (
 
     <>
-    
-      <LanguageButton />
+
       {componentToRender}
       
     </>
@@ -67,11 +66,11 @@ function ContentScreen({ page, language, setPage, setLanguage }) {
       </>
     );
   } else {
-    conditionalMenu = <LanguageButton language={language} setLanguage={setLanguage} />;
+
     if (language === 'chinese') {
-      conditionalMenu = <ChineseMenu setPage={setPage} />;
+      conditionalMenu = <><ChineseMenu setPage={setPage} /><LanguageButton language={language} setLanguage={setLanguage} /></>;
     } else if (language === 'english') {
-      conditionalMenu = <EnglishMenu setPage={setPage} />;
+      conditionalMenu = <><EnglishMenu setPage={setPage} /><LanguageButton language={language} setLanguage={setLanguage} /></>;
     }
   }
 
@@ -88,9 +87,9 @@ function LanguageButton({language}) {
   let buttonElement = null;
 
     if (language === 'chinese') {
-      buttonElement = <button>中國人</button>;
+      buttonElement = <button>English</button>;  
     } else if (language === 'english') {
-      buttonElement = <button>English</button>;
+      buttonElement = <button>中國人</button>;
     }
 
   return (
