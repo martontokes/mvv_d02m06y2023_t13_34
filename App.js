@@ -8,6 +8,7 @@ export default function App() {
   const [isWelcome, setWelcome] = useState(true);
 
   let languageChanger;
+  let componentToRender;
 
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
