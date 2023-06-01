@@ -12,7 +12,7 @@ export default function App() {
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
-    componentToRender = <ContentScreen language={language} setPage={setPage} />;
+    componentToRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage} />;
   }
 
   return (
@@ -62,6 +62,7 @@ function ContentScreen({ page, language, setPage, setLanguage }) {
     conditionalMenu = (
       <>
         <BurgerMenu />
+        <Content />
         <PageIndicator />
       </>
     );
@@ -77,19 +78,25 @@ function ContentScreen({ page, language, setPage, setLanguage }) {
   return (
     <>
       {conditionalMenu}
-      <Content page={page} />
+      <Content page={page} language={language} />
     </>
   );
 }
 
-function LanguageButton({language}) {
+function LanguageButton({ language, setLanguage }) {
 
   let buttonElement = null;
 
+  const setLang = (lang) => {
+
+    setLanguage(lang);
+
+  };
+
     if (language === 'chinese') {
-      buttonElement = <button>English</button>;  
+      buttonElement = <button onClick={() => setLang('english') }>English</button>;  
     } else if (language === 'english') {
-      buttonElement = <button>中國人</button>;
+      buttonElement = <button onClick={() => setLang('chinese') }>中國人</button>;
     }
 
   return (
@@ -115,13 +122,13 @@ function EnglishMenu({ setPage }) {
     <>
       <h2>metro via virtual</h2>
       <h3>A virtual exhibition from Hong Kong</h3>
-      <button onClick={changeContent('curatorial')}>curatorial statement</button>
-      <button onClick={changeContent('essay')}>essay about the exhibition</button>
-      <button onClick={changeContent('autosave')}>Autosave: Redoubt</button>
-      <button onClick={changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
-      <button onClick={changeContent('illumination')}>Illumination</button>
-      <button onClick={changeContent('butterflies')}>Butterflies on the Wheel</button>
-      <button onClick={changeContent('domestik')}>Domestik/Publik</button>
+      <button onClick={() => changeContent('curatorial')}>curatorial statement</button>
+      <button onClick={() => changeContent('essay')}>essay about the exhibition</button>
+      <button onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
+      <button onClick={() => changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
+      <button onClick={() => changeContent('illumination')}>Illumination</button>
+      <button onClick={() => changeContent('butterflies')}>Butterflies on the Wheel</button>
+      <button onClick={() => changeContent('domestik')}>Domestik/Publik</button>
     </>
   );
 }
@@ -137,12 +144,12 @@ function ChineseMenu({ setPage }) {
     <>
       <h2>虛擬都會</h2>
       <h3>虛擬都會</h3>
-      <button onClick={changeContent('curatorial')}>策展論</button>
-      <button onClick={changeContent('autosave')}>自動存檔：堡壘</button>
-      <button onClick={changeContent('confidential')}>機密錄：雙城</button>
-      <button onClick={changeContent('illumination')}>啟示</button>
-      <button onClick={changeContent('butterflies')}>黃淑賢</button>
-      <button onClick={changeContent('domestik')}>家居/公共</button>
+      <button onClick={() => changeContent('curatorial')}>策展論</button>
+      <button onClick={() => changeContent('autosave')}>自動存檔：堡壘</button>
+      <button onClick={() => changeContent('confidential')}>機密錄：雙城</button>
+      <button onClick={() => changeContent('illumination')}>啟示</button>
+      <button onClick={() => changeContent('butterflies')}>黃淑賢</button>
+      <button onClick={() => changeContent('domestik')}>家居/公共</button>
     </>
   );
 }
