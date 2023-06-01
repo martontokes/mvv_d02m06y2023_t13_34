@@ -7,7 +7,6 @@ export default function App() {
   const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
 
-  let languageChanger;
   let componentToRender;
   let languageChangerContainer;
 
@@ -24,9 +23,9 @@ export default function App() {
     }
 
   return (
-    
+
     <>
-      {checkIsMobile}
+
       {componentToRender}
       {languageChangerContainer}
       
@@ -66,7 +65,7 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
   }
 
 
-function ContentScreen({ page, language, setPage }) {
+function ContentScreen({ page, language, setPage, setLanguage }) {
   let conditionalMenu;
   if (isMobile) {
     conditionalMenu = (
@@ -92,7 +91,7 @@ function ContentScreen({ page, language, setPage }) {
   );
 }
 
-function LanguageButton({language, setLanguage}) {
+function LanguageButton({language}) {
 
   let buttonElement = null;
 
