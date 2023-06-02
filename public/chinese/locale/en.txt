@@ -1,0 +1,13 @@
+#: locale=en
+
+## Tour
+
+### Description
+
+### Title
+tour.name = Elaine
+
+## Media
+
+### Title
+media_C75FB92A_CC78_8C83_41E0_E752A6D34681.label = Elaine
