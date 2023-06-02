@@ -9,6 +9,8 @@ export default function App() {
 
   let componentToRender;
 
+
+
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
@@ -18,7 +20,7 @@ export default function App() {
   return (
 
     <>
-
+      <img src="/0.png" />
       {componentToRender}
       
     </>
@@ -231,6 +233,7 @@ function Content( { page, language } ) {
 
         <>
         <p>illumination</p>
+
         </>
   
       )
