@@ -45,7 +45,7 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
     return (
       <>
         <h1>metro via virtual</h1>
-        <h1>a virtual exhibition from Hong Kong</h1>
+        <h5>a virtual exhibition from Hong Kong</h5>
         <button onClick={() => { setEnglish(); enterSite(); }}>enter exhibition</button>
         <h1>虛擬都會</h1>
         <h1>來自香港的線上展覽</h1>
@@ -122,7 +122,7 @@ function EnglishMenu({ setPage }) {
   return (
     <>
       <h2>metro via virtual</h2>
-      <h3>A virtual exhibition from Hong Kong</h3>
+      <h6>A virtual exhibition from Hong Kong</h6>
       <button onClick={() => changeContent('curatorial')}>curatorial statement</button>
       <button onClick={() => changeContent('essay')}>essay about the exhibition</button>
       <button onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
