@@ -2,17 +2,22 @@
 
 :root {
     background: black;
+    font-size: 16px;
+    color: white;
 }
 
 
 * {
     margin: 0;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 300 !important;
 }
 
 #__next {
 
-    margin-left: 5%;
-    margin-right: 5%;
+    width: 100vw;
+    height: 100vh;
+
 
 }
 
@@ -23,13 +28,52 @@ h2 {
 
 }
 
-h3 {
-    
-}
 
 body {
+
+
     color: white;
     font-family: 'Urbanist', sans-serif;
     font-weight: 400 !important;
+
+}
+
+.welcometitle {
+
+    margin-top: 3vh;
+    font-size: 5.63vh;
+}
+
+.welcomesubtitle {
+
+    font-size: 2.11vh;
+
+}
+
+.enterbutton {
+
+    margin-top: 3vh;
+    font-size: 2.5vh;
+
+}
+
+#outerwelcome {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enterbutton {
+
+    color: white;
+    background: black;
+    height: 100px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    border-radius: 1000px;
+    border-width: 1px;
+    border-color: white;
 
 }

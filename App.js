@@ -44,12 +44,18 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
   
     return (
       <>
-        <h1>metro via virtual</h1>
-        <h5>a virtual exhibition from Hong Kong</h5>
-        <button onClick={() => { setEnglish(); enterSite(); }}>enter exhibition</button>
-        <h1>虛擬都會</h1>
-        <h1>來自香港的線上展覽</h1>
-        <button onClick={() => { setChinese(); enterSite(); }}>進入展覽</button>
+      <div id="outerwelcome">
+      <div id="welcomecenter">
+
+        <h1 className="welcometitle">metro via virtual</h1>
+        <h5 className="welcomesubtitle">a virtual exhibition from Hong Kong</h5>
+        <button className="enterbutton" onClick={() => { setEnglish(); enterSite(); }}>enter exhibition</button>
+        <h1 className="welcometitle">虛擬都會</h1>
+        <h1 className="welcomesubtitle">來自香港的線上展覽</h1>
+        <button className="enterbutton" onClick={() => { setChinese(); enterSite(); }}>進入展覽</button>
+      
+      </div>
+      </div>
       </>
     );
   }
