@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Elaine</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" id="metaViewport" content="user-scalable=no, initial-scale=1, width=device-width, viewport-fit=cover" data-tdv-general-scale="0.5" />
+    <link rel="preload" href="script.js?v=1609748485310" as="script" />
+    <link rel="preload" href="locale/en.txt?v=1609748485310" as="fetch" crossorigin="anonymous" />
+    <meta name="description" content="Virtual Tour" />
+    <meta name="theme-color" content="#000000" />
+    <script src="lib/tdvplayer.js?v=1609748485310"></script>
+    <script src="script.js?v=1609748485310"></script>
+    <script type="text/javascript">
+        (function () {
+            var deviceType = TDV.PlayerAPI.mobile ? 'mobile' : 'general';
+            var devicesUrl = { "general": "script_general.js?v=1609748485310" };
+            var url = deviceType in devicesUrl ? devicesUrl[deviceType] : devicesUrl['general'];
+            if (typeof url == "object") {
+                var orient = TDV.PlayerAPI.getOrientation();
+                if (orient in url) {
+                    url = url[orient];
+                }
+            }
+            var link = document.createElement('link');
+            link.rel = 'preload';
+            link.href = url;
+            link.as = 'script';
+            var el = document.getElementsByTagName('script')[0];
+            el.parentNode.insertBefore(link, el);
+        })();
+    </script>
+    <script type="text/javascript">
+        var tour;
+
+        function loadTour() {
+            if (tour) return;
+
+            var settings = new TDV.PlayerSettings();
+            settings.set(TDV.PlayerSettings.CONTAINER, document.getElementById('viewer'));
+            settings.set(TDV.PlayerSettings.WEBVR_POLYFILL_URL, 'lib/WebVRPolyfill.js?v=1609748485310');
+            settings.set(TDV.PlayerSettings.HLS_URL, 'lib/Hls.js?v=1609748485310');
+            settings.set(TDV.PlayerSettings.QUERY_STRING_PARAMETERS, 'v=1609748485310');
+
+            var devicesUrl = { "general": "script_general.js?v=1609748485310" };
+
+            tour = new TDV.Tour(settings, devicesUrl);
+            tour.bind(TDV.Tour.EVENT_TOUR_INITIALIZED, onVirtualTourInit);
+            tour.bind(TDV.Tour.EVENT_TOUR_LOADED, onVirtualTourLoaded);
+            tour.bind(TDV.Tour.EVENT_TOUR_ENDED, onVirtualTourEnded);
+            tour.load();
+        }
+
+        function pauseTour() {
+            if (!tour)
+                return;
+
+            tour.pause();
+        }
+
+        function resumeTour() {
+            if (!tour)
+                return;
+
+            tour.resume();
+        }
+
+        function onVirtualTourInit() {
+            var updateTexts = function () {
+                document.title = this.trans("tour.name")
+            };
+
+            tour.locManager.bind(TDV.Tour.LocaleManager.EVENT_LOCALE_CHANGED, updateTexts.bind(tour.locManager));
+            ;
+        }
+
+        function onVirtualTourLoaded() {
+            disposePreloader();
+        }
+
+        function onVirtualTourEnded() {
+
+        }
+
+        function setMediaByIndex(index) {
+            if (!tour)
+                return;
+
+            tour.setMediaByIndex(index);
+        }
+
+        function setMediaByName(name) {
+            if (!tour)
+                return;
+
+            tour.setMediaByName(name);
+        }
+
+        function showPreloader() {
+            var preloadContainer = document.getElementById('preloadContainer');
+            if (preloadContainer != undefined)
+                preloadContainer.style.opacity = 1;
+        }
+
+        function disposePreloader() {
+            var preloadContainer = document.getElementById('preloadContainer');
+            if (preloadContainer == undefined)
+                return;
+
+            var transitionEndName = transitionEndEventName();
+            if (transitionEndName) {
+                preloadContainer.addEventListener(transitionEndName, hide, false);
+                preloadContainer.style.opacity = 0;
+                setTimeout(hide, 500); //Force hide. Some cases the transitionend event isn't dispatched with an iFrame.
+            }
+            else {
+                hide();
+            }
+
+            function hide() {
+
+                preloadContainer.style.visibility = 'hidden';
+                preloadContainer.style.display = 'none';
+                var videoList = preloadContainer.getElementsByTagName("video");
+                for (var i = 0; i < videoList.length; ++i) {
+                    var video = videoList[i];
+                    video.pause();
+                    while (video.children.length)
+                        video.removeChild(video.children[0]);
+                }
+            }
+
+            function transitionEndEventName() {
+                var el = document.createElement('div');
+                var transitions = {
+                    'transition': 'transitionend',
+                    'OTransition': 'otransitionend',
+                    'MozTransition': 'transitionend',
+                    'WebkitTransition': 'webkitTransitionEnd'
+                };
+
+                var t;
+                for (t in transitions) {
+                    if (el.style[t] !== undefined) {
+                        return transitions[t];
+                    }
+                }
+
+                return undefined;
+            }
+        }
+
+        function onBodyClick() {
+            document.body.removeEventListener("click", onBodyClick);
+            document.body.removeEventListener("touchend", onBodyClick);
+            loadTour();
+        }
+
+        function onLoad() {
+            if (/AppleWebKit/.test(navigator.userAgent) && /Mobile\/\w+/.test(navigator.userAgent)) {
+                var inIFrame = false;
+                try {
+                    inIFrame = (window.self !== window.top);
+                }
+                catch (e) {
+                    inIFrame = true;
+                }
+                if (!inIFrame) {
+                    var onResize = function (async) {
+                        [0, 250, 1000, 2000].forEach(function (delay) {
+                            setTimeout(function () {
+                                var viewer = document.querySelector('#viewer');
+                                var scale = window.innerWidth / document.documentElement.clientWidth;
+                                var width = document.documentElement.clientWidth;
+                                var height = Math.round(window.innerHeight / scale);
+                                viewer.style.width = width + 'px';
+                                viewer.style.height = height + 'px';
+                                viewer.style.left = Math.round((window.innerWidth - width) * 0.5) + 'px';
+                                viewer.style.top = Math.round((window.innerHeight - height) * 0.5) + 'px';
+                                viewer.style.transform = 'scale(' + scale + ', ' + scale + ')';
+                                window.scrollTo(0, 0);
+                            }, delay);
+                        });
+                    };
+                    var onTouchEnd = function () {
+                        document.body.removeEventListener("touchend", onTouchEnd);
+                        clearInterval(resizeIntervalId);
+                        onResize();
+                        if (/CriOS/.test(navigator.userAgent))
+                            setInterval(onResize, 4000);
+                    };
+                    document.body.addEventListener("touchend", onTouchEnd);
+                    var resizeIntervalId = setInterval(onResize, 300);
+                    window.addEventListener('resize', onResize);
+                    onResize();
+                }
+            }
+
+            var params = getParams(location.search.substr(1));
+            if (params.hasOwnProperty("skip-loading")) {
+                loadTour();
+                return;
+            }
+
+            if (isOVRWeb()) {
+                showPreloader();
+                loadTour();
+                return;
+            }
+
+            showPreloader();
+            loadTour();
+        }
+
+        function playVideo(video) {
+            function isSafariDesktopV11orGreater() {
+                return /^((?!chrome|android|crios|ipad|iphone).)*safari/i.test(navigator.userAgent) && parseFloat(/Version\/([0-9]+\.[0-9]+)/i.exec(navigator.userAgent)[1]) >= 11;
+            }
+
+            function hasAudio(video) {
+                return video.mozHasAudio ||
+                    Boolean(video.webkitAudioDecodedByteCount) ||
+                    Boolean(video.audioTracks && video.audioTracks.length);
+            }
+
+            function detectUserAction() {
+                var onVideoClick = function (e) {
+                    if (video.paused) {
+                        video.play();
+                    }
+                    video.muted = false;
+                    if (hasAudio(video)) {
+                        e.stopPropagation();
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                    }
+
+                    video.removeEventListener('click', onVideoClick);
+                    video.removeEventListener('touchend', onVideoClick);
+                };
+                video.addEventListener("click", onVideoClick);
+                video.addEventListener("touchend", onVideoClick);
+            }
+
+            if (isSafariDesktopV11orGreater()) {
+                video.muted = true;
+                video.play();
+            } else {
+                var canPlay = true;
+                var promise = video.play();
+                if (promise) {
+                    promise.catch(function () {
+                        video.muted = true;
+                        video.play();
+                        detectUserAction();
+                    });
+                } else {
+                    canPlay = false;
+                }
+
+                if (!canPlay || video.muted) {
+                    detectUserAction();
+                }
+            }
+        }
+
+        function isOVRWeb() {
+            return window.location.hash.substring(1).split('&').indexOf('ovrweb') > -1;
+        }
+
+        function getParams(params) {
+            var queryDict = {}; params.split("&").forEach(function (item) { var k = item.split("=")[0], v = decodeURIComponent(item.split("=")[1]); queryDict[k.toLowerCase()] = v });
+            return queryDict;
+        }
+
+        document.addEventListener('DOMContentLoaded', onLoad);
+    </script>
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+
+        #viewer {
+            z-index: 1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+        }
+
+        #preloadContainer {
+            z-index: 2;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-color: rgba(0,0,0,1);
+            transition: opacity 0.5s;
+            -webkit-transition: opacity 0.5s;
+            -moz-transition: opacity 0.5s;
+            -o-transition: opacity 0.5s;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="preloadContainer"><div style="z-index: 4; position: absolute; left: 0%; top: 50%; width: 100.00%; height: 10.00%"><div style="text-align:left; color:#000; "><DIV STYLE="text-align:center;font-size:1.6666666666666663vmin;"><SPAN STYLE="display:inline-block; letter-spacing:0vmin; white-space:pre-wrap;color:#777777;font-size:1.67vmin;font-family:Arial, Helvetica, sans-serif;">Loading virtual tour. Please wait...</SPAN></DIV></div></div></div>
+    <div id="viewer"></div>
+
+
+</body>
+
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Urbanist&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700&display=swap');
+
+    div[tdvlayer="overShadow"] {
+        background-color: black;
+    }
+
+    div[tdvlayer="shadow"] {
+        background-color: black;
+    }
+
+
+    div[tdvlayer="background"] {
+        background-color: black;
+    }
+
+
+    div[tdvlayer="content"] {
+        background-color: black;
+    }
+
+    #13 {
+        background-color: black;
+    }
+
+    * {
+        font-family: 'Urbanist', sans-serif !important;
+    }
+
+    canvas[tdvlayer="background"] {
+        opacity: 0.1 !important;
+        border-radius: 90px !important;
+    }
+
+    canvas[tdvlayer="content"] {
+        background-color: transparent !important;
+    }
+
+    div[tdvclass="Button"] > div[tdvlayer="overShadow"] > div[tdvlayer="content"] {
+        background-color: transparent !important;
+    }
+
+    div[id="30"] > div[tdvlayer="overShadow"] > div[tdvlayer="content"] {
+        background-color: transparent !important;
+    }
+
+    div[id="30"] > div[tdvlayer="overShadow"] {
+        background-color: transparent !important;
+    }
+
+    div[id="28"] > div[tdvlayer="overShadow"] > div[tdvlayer="content"] {
+        background-color: transparent !important;
+    }
+
+    div[id="28"] > div[tdvlayer="overShadow"] {
+        background-color: transparent !important;
+    }
+
+    div[id="13"] {
+        opacity: 0;
+    }
+
+    #manualContainerId {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh; /* set the height of the div to the viewport height */
+    }
+
+    p {
+        margin: auto; /* center the paragraph horizontally */
+        color: white;
+        z-index: 3;
+        text-align: center;
+        line-height: 1.5;
+    }
+
+
+</style>
+
+<script>
+
+    var noText;
+    var yesText;
+    var enableVideoText;
+    var windowToCheck;
+    var divElement;
+
+    var checkExist = setInterval(function () {
+        divElement = document.querySelector(`div[id="13"]`);
+        if (divElement) {
+            yesText = document.querySelector('div[id="18"] span');
+            noText = document.querySelector('div[id="19"] span');
+            enableVideoText = document.querySelector('div[id="13"] span');
+            yesText.setAttribute("id", "yesText");
+            noText.setAttribute("id", "noText");
+            yesText.textContent = '是';
+            noText.textContent = '否';
+            enableVideoText.textContent = '播放視頻?';
+            makeWindowVisible();
+            userManual();
+            clearInterval(checkExist);
+        }
+    }, 1000);
+
+    function makeWindowVisible() {
+        setTimeout(() => {
+            var element = document.querySelector(`div[id="13"]`);
+            fadeIn(element, 400);
+        }, 500);
+    }
+
+    function fadeIn(element, duration) {
+        element.style.opacity = 0;
+        let startTime = null;
+
+        function animate(currentTime) {
+            if (!startTime) {
+                startTime = currentTime;
+            }
+            const elapsed = currentTime - startTime;
+            const opacity = Math.min(1, elapsed / duration);
+            element.style.opacity = opacity;
+            if (elapsed < duration) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+
+    function fadeOut(element, duration) {
+        element.style.opacity = 1;
+        let startTime = null;
+
+        function animate(currentTime) {
+            if (!startTime) {
+                startTime = currentTime;
+            }
+            const elapsed = currentTime - startTime;
+            const opacity = Math.max(0, 1 - elapsed / duration);
+            element.style.opacity = opacity;
+            if (elapsed < duration) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+
+    function userManual() {
+        // Get the div element
+        const yesButtonDiv = document.querySelector(`div[id="18"]`);
+
+        // Add an event listener to the div element
+        yesButtonDiv.addEventListener('click', function () {
+            // Create a new element on click
+
+            var userManualText = document.createElement("p");
+            userManualText.style.opacity = 0;
+            userManualText.innerHTML = "To explore the living room, click and drag the mouse to look around.<br> Use the mouse wheel to zoom in and out for a closer look at the details.<br> Turn on your speakers to experience the audio track."
+            var manualContainer = document.createElement("div");
+            manualContainer.setAttribute("id", "manualContainerId");
+            document.body.appendChild(manualContainer);
+            manualContainer.appendChild(userManualText);
+
+            setTimeout(() => {
+
+                fadeIn(userManualText, 3000);
+                setTimeout(() => { fadeOut(userManualText, 3000); }, 8000);
+
+            }, 1000);
+
+            console.log("click!");
+
+        });
+    }
+
+
+
+
+
+</script>
+
+</html>
+
