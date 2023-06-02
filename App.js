@@ -541,7 +541,3 @@ Peter Nelson is a visual artist and academic working at the intersection of land
   }
 
 }
-
-// Good //
-//
-//
