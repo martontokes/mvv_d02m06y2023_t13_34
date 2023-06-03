@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 
 
@@ -13,6 +13,8 @@ export default function App() {
 
   let componentToRender;
 
+
+
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
@@ -23,6 +25,7 @@ export default function App() {
 
     <>
       {componentToRender}
+ 
       
     </>
   );
@@ -179,7 +182,7 @@ function BurgerMenu() {
   )
 }
 
-function EnglishMenu({ setPage }) {
+function EnglishMenu({ setPage, page }) {
 
   function changeContent(num) {
 
@@ -188,7 +191,16 @@ function EnglishMenu({ setPage }) {
     setTimeout(() => {
 
     setPage(num);
+
     setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
+
+    let menubuttons = document.getElementsByClassName("menubutton");
+    for (let i = 0; i < menubuttons.length ; i++) {
+      menubuttons[i].classList.remove("menuButtonActive");
+    }
+
+
+    
 
     }, 2000);
   }
@@ -224,6 +236,8 @@ function ChineseMenu({ setPage }) {
      setTimeout(  () => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
  
      }, 2000);
+
+     
    }
 
   return (
