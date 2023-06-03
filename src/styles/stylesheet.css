@@ -27,7 +27,7 @@ body {
 
 
 
-#outerwelcome {
+#body {
 
     display: flex;
     justify-content: center;
@@ -35,21 +35,43 @@ body {
 
 }
 
+#welcomecenter {
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+#content {
+    opacity: 0;
+    transition: opacity 2s;
+
+}
+
+
+
 @media screen and (min-width: 600px) {
 
 #chwelc {
     margin-top: 30px;
+    font-size: 50px;
+    opacity: inherit;
+    transition: inherit;
 }
 
 .welcometitle {
     font-size: 60px;
+    opacity: inherit;
+    transition: inherit;
 }
 
 .welcomesubtitle {
+    opacity: inherit;
+    transition: inherit;
     font-size: 30px;
 }
 
 .enterbutton {
+    opacity: inherit;
+    transition: inherit;
     margin-top: 10px;
     font-size: 36px;
     background: black;
@@ -61,6 +83,8 @@ body {
 }
 
 .enterbutton img {
+    opacity: inherit;
+    transition: inherit;
     height: 80px;
 }
 
@@ -70,14 +94,21 @@ body {
 
     #chwelc {
         margin-top: 30px;
+        font-size: 26px;
+        opacity: inherit;
+        transition: inherit;
     }
 
     .welcometitle {
         font-size: 30px;
+        opacity: inherit;
+        transition: inherit;
     }
     
     .welcomesubtitle {
         font-size: 16px;
+        opacity: inherit;
+        transition: inherit;
     }
 
     .enterbutton {
@@ -88,10 +119,14 @@ body {
         padding: 0;
         margin: 0; 
         margin-top: 10px;
+        opacity: inherit;
+        transition: inherit;
 
     }
 
     .enterbutton img {
+        opacity: inherit;
+        transition: inherit;
         height: 60px;
     }
     

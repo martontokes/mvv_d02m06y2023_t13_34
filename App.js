@@ -9,8 +9,6 @@ export default function App() {
 
   let componentToRender;
 
-
-
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
@@ -31,30 +29,40 @@ export default function App() {
 function WelcomeScreen({ setWelcome, setLanguage }) {
 
     const enterSite = () => {
+
+      document.getElementById("welcomecenter").style.opacity = 0;
+
+      setTimeout(() => {
       setWelcome(false);
+      setTimeout(() => {document.getElementById("content").style.opacity = 1;}, 50)
+ 
+    }, 2000);
     };
   
     const setEnglish = () => {
+      setTimeout(() => {
       setLanguage('english');
+    }, 2000);
     };
   
     const setChinese = () => {
+      setTimeout(() => {
       setLanguage('chinese');
+    }, 2000);
     };
   
     return (
       <>
-      <div id="outerwelcome">
+
       <div id="welcomecenter">
 
         <h1 className="welcometitle">metro via virtual</h1>
         <h5 className="welcomesubtitle">a virtual exhibition from Hong Kong</h5>
         <button className="enterbutton" onClick={() => { setEnglish(); enterSite(); }}><img src="/entereng.svg" /></button>
         <h1 id="chwelc" className="welcometitle">虛擬都會</h1>
-        <h5 className="welcomesubtitle">來自香港的線上展覽</h5>
+        <h5 id="chsub" className="welcomesubtitle">來自香港的線上展覽</h5>
         <button className="enterbutton" onClick={() => { setChinese(); enterSite(); }}><img src="/enterzh.svg" /></button>
       
-      </div>
       </div>
       </>
     );
@@ -64,6 +72,11 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 function ContentScreen({ page, language, setPage, setLanguage }) {
 
   let conditionalMenu;
+
+if (document.getElementById("content") != null && document.getElementById("content").style.opacity == 1) {
+  document.getElementById("content").style.opacity = 0;
+}
+  
 
   if (isMobile) {
     conditionalMenu = (
@@ -84,8 +97,10 @@ function ContentScreen({ page, language, setPage, setLanguage }) {
 
   return (
     <>
+    <div id="content">
       {conditionalMenu}
       <Content page={page} language={language} />
+    </div>
     </>
   );
 }
