@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 
 
@@ -182,25 +182,28 @@ function BurgerMenu() {
   )
 }
 
-function EnglishMenu({ setPage, page }) {
+function EnglishMenu({ setPage }) {
 
   function changeContent(num) {
 
     document.getElementById("contentToFade").style.opacity = 0;
+
+    let menubuttons = document.getElementsByClassName("menubutton");
+    for (let i = 0; i < menubuttons.length; i++ ) {
+      menubuttons[i].classList.remove("menuButtonActive"); 
+    }
+
+    menubuttons = document.getElementsByClassName(num);
+    for (let v = 0; v < menubuttons.length; v++ ) {
+      menubuttons[v].classList.add("menuButtonActive");
+    }
+
 
     setTimeout(() => {
 
     setPage(num);
 
     setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
-
-    let menubuttons = document.getElementsByClassName("menubutton");
-    for (let i = 0; i < menubuttons.length ; i++) {
-      menubuttons[i].classList.remove("menuButtonActive");
-    }
-
-
-    
 
     }, 2000);
   }
@@ -228,6 +231,20 @@ function ChineseMenu({ setPage }) {
   function changeContent(num) {
 
     document.getElementById("contentToFade").style.opacity = 0;
+
+    let menubuttons = document.getElementsByClassName("menubutton");
+    for (let i = 0; i < menubuttons.length; i++ ) {
+      menubuttons[i].classList.remove("menuButtonActive"); 
+    }
+
+    menubuttons = document.getElementsByClassName(num);
+    for (let v = 0; v < menubuttons.length; v++ ) {
+      menubuttons[v].classList.add("menuButtonActive");
+    }
+
+    
+    
+
 
      setTimeout(() => {
       
