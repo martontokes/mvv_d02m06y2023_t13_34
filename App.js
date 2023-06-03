@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 
-var activeMenuName;
-
 export default function App() {
 
   const [language, setLanguage] = useState('');
@@ -10,9 +8,6 @@ export default function App() {
   const [isWelcome, setWelcome] = useState(true);
 
   let componentToRender;
-
-
-
 
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
@@ -94,9 +89,9 @@ if (document.getElementById("content") != null && document.getElementById("conte
   } else {
 
     if (language === 'chinese') {
-      conditionalMenu = <><ChineseMenu setPage={setPage} /><LanguageButton language={language} setLanguage={setLanguage} /></>;
+      conditionalMenu = <><ChineseMenu setPage={setPage} /><LanguageButton setPage={setPage} language={language} page={page} setLanguage={setLanguage} /></>;
     } else if (language === 'english') {
-      conditionalMenu = <><EnglishMenu setPage={setPage} /><LanguageButton language={language} setLanguage={setLanguage} /></>;
+      conditionalMenu = <><EnglishMenu setPage={setPage} /><LanguageButton setPage={setPage} language={language} page={page} setLanguage={setLanguage} /></>;
     }
   }
 
@@ -137,8 +132,9 @@ function Header({ language }) {
 
 
 
-function LanguageButton({ language, setLanguage }) {
-  const setLang = (lang, numLine) => {
+function LanguageButton({ language, setLanguage, setPage, page }) {
+
+  const setLang = (lang) => {
     document.getElementById("content").style.opacity = 0;
 
     setTimeout(() => {
@@ -149,18 +145,17 @@ function LanguageButton({ language, setLanguage }) {
     
       }, 500);
 
-/* change language keep underscore 
+      let menubuttons = document.getElementsByClassName("menubutton");
 
-      let menu;
-      menu = document.getElementsByClassName(activeMenuName);
-      for (let i = 0; i < menu.length ; i++) {
-        menu[i].classList.add("menuButtonActive");
+      for (let i = 0; i < menubuttons.length; i++ ) {
+        menubuttons[i].classList.remove("menuButtonActive"); 
       }
 
-    }, 2000);
-  };
+      setTimeout(() => { menubuttons = document.getElementsByClassName(page);
+        menubuttons[0].classList.add("menuButtonActive"); }, 200);
 
-  */
+        }, 2000);
+      };
 
   let buttonElement = null;
 
@@ -191,7 +186,7 @@ function EnglishMenu({ setPage }) {
 
   function changeContent(num) {
 
-    activeMenuName = num;
+
 
     document.getElementById("contentToFade").style.opacity = 0;
 
@@ -210,6 +205,7 @@ function EnglishMenu({ setPage }) {
     setTimeout(() => {
 
     setPage(num);
+    
 
     setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
 
@@ -236,9 +232,9 @@ function EnglishMenu({ setPage }) {
 
 function ChineseMenu({ setPage }) {
 
-  activeMenuName = num;
-
   function changeContent(num) {
+
+
 
     document.getElementById("contentToFade").style.opacity = 0;
 
