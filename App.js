@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 
-
-var numLineVar;
 
 export default function App() {
 
@@ -106,6 +104,7 @@ if (document.getElementById("content") != null && document.getElementById("conte
     <>
     <div id="content">
       {conditionalMenu}
+  
       <div id="contentToFade">
       <Content page={page} language={language} />
       </div>
@@ -159,13 +158,13 @@ function LanguageButton({ language, setLanguage }) {
 
   if (language === 'chinese') {
     buttonElement = (
-      <button className="menubutton languageButton" onClick={() => setLang('english', numLineVar)}>
+      <button className="menubutton languageButton" onClick={() => setLang('english')}>
         English
       </button>
     );
   } else if (language === 'english') {
     buttonElement = (
-      <button className="menubutton languageButton" onClick={() => setLang('chinese', numLineVar)}>
+      <button className="menubutton languageButton" onClick={() => setLang('chinese')}>
         中國人
       </button>
     );
@@ -182,18 +181,9 @@ function BurgerMenu() {
 
 function EnglishMenu({ setPage }) {
 
-  function changeContent(num, numLine) {
+  function changeContent(num) {
 
-   document.getElementById("contentToFade").style.opacity = 0;
-
-   let menubuttons = document.getElementsByClassName("menubutton");
-   for (let i = 0; i < menubuttons.length; i++) {
-    menubuttons[i].classList.remove("menuButtonActive");
-   }
-
-   menubuttons[numLine - 1].classList.add("menuButtonActive");
-
-   var numLineVar = numLine;
+    document.getElementById("contentToFade").style.opacity = 0;
 
     setTimeout(() => {
 
@@ -208,13 +198,13 @@ function EnglishMenu({ setPage }) {
       <h2>metro via virtual</h2>
       <h6>A virtual exhibition from Hong Kong</h6>
       <div id="buttonflex">
-      <button className="menubutton" onClick={() => changeContent('curatorial', 1)}>curatorial statement</button>
-      <button className="menubutton" onClick={() => changeContent('essay', 2)}>essay about the exhibition</button>
-      <button className="menubutton" onClick={() => changeContent('autosave', 3)}>Autosave: Redoubt</button>
-      <button className="menubutton" onClick={() => changeContent('confidential', 4)}>Confidential Records: Dual Metropolitans</button>
-      <button className="menubutton" onClick={() => changeContent('illumination', 5)}>Illumination</button>
-      <button className="menubutton" onClick={() => changeContent('butterflies', 6)}>Butterflies on the Wheel</button>
-      <button className="menubutton" onClick={() => changeContent('domestik', 7)}>Domestik/Publik</button>
+      <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>curatorial statement</button>
+      <button className="menubutton essay" onClick={() => changeContent('essay')}>essay about the exhibition</button>
+      <button className="menubutton autosave" onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
+      <button className="menubutton confidential" onClick={() => changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
+      <button className="menubutton illumination" onClick={() => changeContent('illumination')}>Illumination</button>
+      <button className="menubutton butterflies" onClick={() => changeContent('butterflies')}>Butterflies on the Wheel</button>
+      <button className="menubutton domestik" onClick={() => changeContent('domestik')}>Domestik/Publik</button>
       </div>
     </>
   );
@@ -225,18 +215,13 @@ function ChineseMenu({ setPage }) {
 
   function changeContent(num) {
 
-    let menubuttons = document.getElementsByClassName("menubutton");
-    for (let i = 0; i < menubuttons.length; i++) {
-     menubuttons[i].classList.remove("menuButtonActive");
-    }
- 
-    menubuttons[numLine - 1].classList.add("menuButtonActive");
-
     document.getElementById("contentToFade").style.opacity = 0;
+
      setTimeout(() => {
- 
-     setPage(num);
-     setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 150);
+      
+      setPage(num);
+
+     setTimeout(  () => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
  
      }, 2000);
    }
@@ -246,12 +231,12 @@ function ChineseMenu({ setPage }) {
       <h2>虛擬都會</h2>
       <h3>虛擬都會</h3>
       <div id="buttonflex">
-      <button className="menubutton" onClick={() => changeContent('curatorial', 1)}>策展論</button>
-      <button className="menubutton" onClick={() => changeContent('autosave', 3)}>自動存檔：堡壘</button>
-      <button className="menubutton" onClick={() => changeContent('confidential', 4)}>機密錄：雙城</button>
-      <button className="menubutton" onClick={() => changeContent('illumination', 5)}>啟示</button>
-      <button className="menubutton" onClick={() => changeContent('butterflies', 6)}>黃淑賢</button>
-      <button className="menubutton" onClick={() => changeContent('domestik', 7)}>家居/公共</button>
+      <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>策展論</button>
+      <button className="menubutton autosave" onClick={() => changeContent('autosave')}>自動存檔：堡壘</button>
+      <button className="menubutton confidential" onClick={() => changeContent('confidential')}>機密錄：雙城</button>
+      <button className="menubutton illumination" onClick={() => changeContent('illumination')}>啟示</button>
+      <button className="menubutton butterflies" onClick={() => changeContent('butterflies')}>黃淑賢</button>
+      <button className="menubutton domestik" onClick={() => changeContent('domestik')}>家居/公共</button>
       </div>
     </>
   );
