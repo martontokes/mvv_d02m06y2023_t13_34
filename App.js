@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 
+
+var numLineVar;
+
 export default function App() {
+
+
+// le comment //
 
   const [language, setLanguage] = useState('');
   const [page, setPage] = useState('curatorial');
@@ -12,7 +18,7 @@ export default function App() {
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
-    componentToRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage} />;
+    componentToRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage}/>;
   }
 
   return (
@@ -34,7 +40,7 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 
       setTimeout(() => {
       setWelcome(false);
-      setTimeout(() => {document.getElementById("content").style.opacity = 1;}, 50)
+      setTimeout(() => {document.getElementById("content").style.opacity = 1;}, 500)
  
     }, 2000);
     };
@@ -53,7 +59,7 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
   
     return (
       <>
-
+      <div id="welcomeContainer">
       <div id="welcomecenter">
 
         <h1 className="welcometitle">metro via virtual</h1>
@@ -62,18 +68,18 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
         <h1 id="chwelc" className="welcometitle">虛擬都會</h1>
         <h5 id="chsub" className="welcomesubtitle">來自香港的線上展覽</h5>
         <button className="enterbutton" onClick={() => { setChinese(); enterSite(); }}><img src="/enterzh.svg" /></button>
-      
+      </div>
       </div>
       </>
     );
   }
 
 
-function ContentScreen({ page, language, setPage, setLanguage }) {
+function ContentScreen({ page, language, setPage, setLanguage, isWelcome }) {
 
   let conditionalMenu;
 
-if (document.getElementById("content") != null && document.getElementById("content").style.opacity == 1) {
+if (document.getElementById("content") != null && document.getElementById("content").style.opacity == 1 && isWelcome == true) {
   document.getElementById("content").style.opacity = 0;
 }
   
@@ -81,6 +87,7 @@ if (document.getElementById("content") != null && document.getElementById("conte
   if (isMobile) {
     conditionalMenu = (
       <>
+        <Header language={language} />
         <BurgerMenu />
         <Content />
         <PageIndicator />
@@ -99,58 +106,133 @@ if (document.getElementById("content") != null && document.getElementById("conte
     <>
     <div id="content">
       {conditionalMenu}
+      <div id="contentToFade">
       <Content page={page} language={language} />
+      </div>
     </div>
     </>
   );
 }
 
+function Header({ language }) {
+  if (language === "english") {
+    return (
+      <>
+        <h1 className="welcometitle">metro via virtual</h1>
+        <h5 className="welcomesubtitle">a virtual exhibition from Hong Kong</h5>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1 id="chwelc" className="welcometitle">
+          虛擬都會
+        </h1>
+        <h5 id="chsub" className="welcomesubtitle">
+          來自香港的線上展覽
+        </h5>
+      </>
+    );
+  }
+}
+
+
+
 function LanguageButton({ language, setLanguage }) {
+  const setLang = (lang, numLine) => {
+    document.getElementById("content").style.opacity = 0;
+
+    setTimeout(() => {
+      setLanguage(lang);
+
+      setTimeout(() => {
+        document.getElementById("content").style.opacity = 1;
+
+        const menubuttons = document.getElementsByClassName("menubutton");
+        if (menubuttons.length > numLine - 1) {
+          for (let i = 0; i < menubuttons.length; i++) {
+            menubuttons[i].classList.remove("menuButtonActive");
+          }
+
+          menubuttons[numLine - 1].classList.add("menuButtonActive");
+        }
+      }, 500);
+
+
+      const menubuttons = document.getElementsByClassName("menubutton");
+      if (menubuttons.length > numLine - 1) {
+        for (let i = 0; i < menubuttons.length; i++) {
+          menubuttons[i].classList.remove("menuButtonActive");
+        }
+
+        menubuttons[numLine - 1].classList.add("menuButtonActive");
+
+
+
+    }, 2000);
+  };
 
   let buttonElement = null;
 
-  const setLang = (lang) => {
+  if (language === 'chinese') {
+    buttonElement = (
+      <button className="menubutton languageButton" onClick={() => setLang('english', numLineVar)}>
+        English
+      </button>
+    );
+  } else if (language === 'english') {
+    buttonElement = (
+      <button className="menubutton languageButton" onClick={() => setLang('chinese', numLineVar)}>
+        中國人
+      </button>
+    );
+  }
 
-    setLanguage(lang);
-
-  };
-
-    if (language === 'chinese') {
-      buttonElement = <button onClick={() => setLang('english') }>English</button>;  
-    } else if (language === 'english') {
-      buttonElement = <button onClick={() => setLang('chinese') }>中國人</button>;
-    }
-
-  return (
-    <>
-      {buttonElement}
-    </>
-  );
+  return <>{buttonElement}</>;
 }
 
 function BurgerMenu() {
   return (
-    <button>BurgerButton Content</button>
+    <button><img src="/burgerbutton.png"></img></button>
   )
 }
 
 function EnglishMenu({ setPage }) {
 
-  function changeContent(num) {
+  function changeContent(num, numLine) {
+
+   document.getElementById("contentToFade").style.opacity = 0;
+
+   let menubuttons = document.getElementsByClassName("menubutton");
+   for (let i = 0; i < menubuttons.length; i++) {
+    menubuttons[i].classList.remove("menuButtonActive");
+   }
+
+   menubuttons[numLine - 1].classList.add("menuButtonActive");
+
+   var numLineVar = numLine;
+
+    setTimeout(() => {
+
     setPage(num);
+    setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
+
+    }, 2000);
   }
 
   return (
     <>
       <h2>metro via virtual</h2>
       <h6>A virtual exhibition from Hong Kong</h6>
-      <button onClick={() => changeContent('curatorial')}>curatorial statement</button>
-      <button onClick={() => changeContent('essay')}>essay about the exhibition</button>
-      <button onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
-      <button onClick={() => changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
-      <button onClick={() => changeContent('illumination')}>Illumination</button>
-      <button onClick={() => changeContent('butterflies')}>Butterflies on the Wheel</button>
-      <button onClick={() => changeContent('domestik')}>Domestik/Publik</button>
+      <div id="buttonflex">
+      <button className="menubutton" onClick={() => changeContent('curatorial', 1)}>curatorial statement</button>
+      <button className="menubutton" onClick={() => changeContent('essay', 2)}>essay about the exhibition</button>
+      <button className="menubutton" onClick={() => changeContent('autosave', 3)}>Autosave: Redoubt</button>
+      <button className="menubutton" onClick={() => changeContent('confidential', 4)}>Confidential Records: Dual Metropolitans</button>
+      <button className="menubutton" onClick={() => changeContent('illumination', 5)}>Illumination</button>
+      <button className="menubutton" onClick={() => changeContent('butterflies', 6)}>Butterflies on the Wheel</button>
+      <button className="menubutton" onClick={() => changeContent('domestik', 7)}>Domestik/Publik</button>
+      </div>
     </>
   );
 }
@@ -159,19 +241,35 @@ function EnglishMenu({ setPage }) {
 function ChineseMenu({ setPage }) {
 
   function changeContent(num) {
-    setPage(num);
-  }
+
+    let menubuttons = document.getElementsByClassName("menubutton");
+    for (let i = 0; i < menubuttons.length; i++) {
+     menubuttons[i].classList.remove("menuButtonActive");
+    }
+ 
+    menubuttons[numLine - 1].classList.add("menuButtonActive");
+
+    document.getElementById("contentToFade").style.opacity = 0;
+     setTimeout(() => {
+ 
+     setPage(num);
+     setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 150);
+ 
+     }, 2000);
+   }
 
   return (
     <>
       <h2>虛擬都會</h2>
       <h3>虛擬都會</h3>
-      <button onClick={() => changeContent('curatorial')}>策展論</button>
-      <button onClick={() => changeContent('autosave')}>自動存檔：堡壘</button>
-      <button onClick={() => changeContent('confidential')}>機密錄：雙城</button>
-      <button onClick={() => changeContent('illumination')}>啟示</button>
-      <button onClick={() => changeContent('butterflies')}>黃淑賢</button>
-      <button onClick={() => changeContent('domestik')}>家居/公共</button>
+      <div id="buttonflex">
+      <button className="menubutton" onClick={() => changeContent('curatorial', 1)}>策展論</button>
+      <button className="menubutton" onClick={() => changeContent('autosave', 3)}>自動存檔：堡壘</button>
+      <button className="menubutton" onClick={() => changeContent('confidential', 4)}>機密錄：雙城</button>
+      <button className="menubutton" onClick={() => changeContent('illumination', 5)}>啟示</button>
+      <button className="menubutton" onClick={() => changeContent('butterflies', 6)}>黃淑賢</button>
+      <button className="menubutton" onClick={() => changeContent('domestik', 7)}>家居/公共</button>
+      </div>
     </>
   );
 }
@@ -300,8 +398,9 @@ Kat Suryna is an international figurative artist with a background in academic p
         <img src="/3.png"></img>
         <img src="/4.png"></img>
         <img src="/5.png"></img>
-
         </>
+
+        
   
       )
       
