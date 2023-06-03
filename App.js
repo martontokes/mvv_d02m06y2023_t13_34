@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 
+var activeMenuName;
 
 export default function App() {
-
-
-// le comment //
 
   const [language, setLanguage] = useState('');
   const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
 
   let componentToRender;
+
 
 
 
@@ -25,8 +24,6 @@ export default function App() {
 
     <>
       {componentToRender}
- 
-      
     </>
   );
 
@@ -78,7 +75,7 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 
 function ContentScreen({ page, language, setPage, setLanguage, isWelcome }) {
 
-  let conditionalMenu;
+let conditionalMenu;
 
 if (document.getElementById("content") != null && document.getElementById("content").style.opacity == 1 && isWelcome == true) {
   document.getElementById("content").style.opacity = 0;
@@ -149,13 +146,21 @@ function LanguageButton({ language, setLanguage }) {
 
       setTimeout(() => {
         document.getElementById("content").style.opacity = 1;
-
     
       }, 500);
 
+/* change language keep underscore 
+
+      let menu;
+      menu = document.getElementsByClassName(activeMenuName);
+      for (let i = 0; i < menu.length ; i++) {
+        menu[i].classList.add("menuButtonActive");
+      }
 
     }, 2000);
   };
+
+  */
 
   let buttonElement = null;
 
@@ -186,6 +191,8 @@ function EnglishMenu({ setPage }) {
 
   function changeContent(num) {
 
+    activeMenuName = num;
+
     document.getElementById("contentToFade").style.opacity = 0;
 
     let menubuttons = document.getElementsByClassName("menubutton");
@@ -193,6 +200,7 @@ function EnglishMenu({ setPage }) {
       menubuttons[i].classList.remove("menuButtonActive"); 
     }
 
+   
     menubuttons = document.getElementsByClassName(num);
     for (let v = 0; v < menubuttons.length; v++ ) {
       menubuttons[v].classList.add("menuButtonActive");
@@ -227,6 +235,8 @@ function EnglishMenu({ setPage }) {
 
 
 function ChineseMenu({ setPage }) {
+
+  activeMenuName = num;
 
   function changeContent(num) {
 
