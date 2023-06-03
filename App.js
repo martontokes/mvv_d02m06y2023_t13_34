@@ -148,25 +148,8 @@ function LanguageButton({ language, setLanguage }) {
       setTimeout(() => {
         document.getElementById("content").style.opacity = 1;
 
-        const menubuttons = document.getElementsByClassName("menubutton");
-        if (menubuttons.length > numLine - 1) {
-          for (let i = 0; i < menubuttons.length; i++) {
-            menubuttons[i].classList.remove("menuButtonActive");
-          }
-
-          menubuttons[numLine - 1].classList.add("menuButtonActive");
-        }
+    
       }, 500);
-
-
-      const menubuttons = document.getElementsByClassName("menubutton");
-      if (menubuttons.length > numLine - 1) {
-        for (let i = 0; i < menubuttons.length; i++) {
-          menubuttons[i].classList.remove("menuButtonActive");
-        }
-
-        menubuttons[numLine - 1].classList.add("menuButtonActive");
-
 
 
     }, 2000);
@@ -475,7 +458,7 @@ For more info about the idea: </p><a href="https://www.ctm-festival.de/festival-
     </a>
   </div>
 </>
-<img src="/domestik.jpg"></img>
+<img className="contentimg" src="/domestik.jpg"></img>
         </>
   
       )
@@ -651,7 +634,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
     </a>
   </div>
 </>
-        <img src="/domestik.jpg"></img>
+        <img className="contentimg" src="/domestik.jpg"></img>
         </>
   
       )
