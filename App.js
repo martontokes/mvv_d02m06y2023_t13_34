@@ -152,6 +152,7 @@ function LanguageButton({ language, setLanguage, setPage, page }) {
       }
 
       setTimeout(() => { menubuttons = document.getElementsByClassName(page);
+        
         menubuttons[0].classList.add("menuButtonActive"); }, 200);
 
         }, 2000);
@@ -204,8 +205,15 @@ function EnglishMenu({ setPage }) {
 
     setTimeout(() => {
 
+      if (num == 'essay') {
+        
+        setPage('curatorial');
+
+      } else {  
+
     setPage(num);
-    
+
+  }
 
     setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
 
@@ -247,6 +255,8 @@ function ChineseMenu({ setPage }) {
     for (let v = 0; v < menubuttons.length; v++ ) {
       menubuttons[v].classList.add("menuButtonActive");
     }
+
+
 
     
     

@@ -4,12 +4,14 @@
 
     background: black;
     height: 100vh;
+    font-size: 16px;
 
 }
 
 #buttonflex {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .menubutton {
@@ -31,6 +33,33 @@
 
 .contentimg {
     width: 100%;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h6 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+h3 { 
+    margin-bottom: 1rem;
+}
+
+h4 {
+    margin-bottom: 0.2rem;
+}
+
+#contentToFade a {
+    margin-bottom: 1rem;
+
+}
+
+#contentToFade p {
+    margin: 1rem 0;
+
 }
 
 .menubutton:hover {
