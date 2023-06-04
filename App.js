@@ -205,15 +205,8 @@ function EnglishMenu({ setPage }) {
 
     setTimeout(() => {
 
-      if (num == 'essay') {
-        
-        setPage('curatorial');
-
-      } else {  
-
     setPage(num);
 
-  }
 
     setTimeout(() => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
 
@@ -222,11 +215,15 @@ function EnglishMenu({ setPage }) {
 
   return (
     <>
-      <h2>metro via virtual</h2>
-      <h6>A virtual exhibition from Hong Kong</h6>
-      <div id="buttonflex">
+
+      <div id="uppermenu">
       <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>curatorial statement</button>
+      <div id="title">
+      <img id="enlogo" src="/metroenlogo.svg" />
+      </div>
       <button className="menubutton essay" onClick={() => changeContent('essay')}>essay about the exhibition</button>
+      </div>
+      <div id="buttonflex">
       <button className="menubutton autosave" onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
       <button className="menubutton confidential" onClick={() => changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
       <button className="menubutton illumination" onClick={() => changeContent('illumination')}>Illumination</button>
@@ -275,10 +272,14 @@ function ChineseMenu({ setPage }) {
 
   return (
     <>
-      <h2>虛擬都會</h2>
-      <h3>虛擬都會</h3>
+      <div className="upperMenuZh">
+      <div id="chtitle">
+      <img id="zhlogo" src="/metrozhlogo.svg" />
+      </div>
+      <button id="zhmenuleft" className="menubutton curatorial" onClick={() => changeContent('curatorial')}>策展論</button>
+      </div>
       <div id="buttonflex">
-      <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>策展論</button>
+
       <button className="menubutton autosave" onClick={() => changeContent('autosave')}>自動存檔：堡壘</button>
       <button className="menubutton confidential" onClick={() => changeContent('confidential')}>機密錄：雙城</button>
       <button className="menubutton illumination" onClick={() => changeContent('illumination')}>啟示</button>
@@ -350,12 +351,16 @@ Ever since the pandemic in 2020, difficulties in international travel barred peo
 
         <>
         <h3>Autosave: Redoubt (2018)</h3>
+        <div className="artistflex">
         <h4>Andrew LUK</h4>
         <h4>Alexis MAILLES</h4>
         <h4>Peter NELSON</h4>
+        </div>
+        <div className="artistflex">
         <a href="www.andrewluk.com" target="_blank">www.andrewluk.com</a>
         <a href="www.alexismailles.com" target="_blank">www.alexismailles.com</a>
         <a href="www.peteracnelson.com" target="_blank">www.peteracnelson.com</a>
+        </div>
         <p>Autosave: Redoubt is made to be a playable map for the computer game Counter-Strike: Global Offensive. It is a site-specific recreation of the WWII bunkers and tunnels of the Kowloon Peninsula built by the British during the 1930s. This piece taps into the dysfunctional military architecture of the historical site as well as the contradictions embedded in the 3D computer game technology for virtual archaeology — the more realistic the site recreation became, the less playable it became as a computer game.
 Andrew Luk is a Hong Kong artist who works across a range of media examining the intricacies of the human experience as well as the myths and histories associated with civilisation building. His work has been exhibited internationally including in Asia Society (Hong Kong), Tai Kwun Contemporary (Hong Kong), HOW Art Museum (Shanghai), and Kula Bazaar ACC (Gwangju). 
 Alexis Mailles produces hybrid installations that border the frontiers of Arte Povera and cyberpunk styles by using digital and analogue techniques. He has exhibited worldwide, including the M21 Museum (Shanghai), the 18th Street Art Center (Los Angeles), the Digital Art Center (Taipei), and Espace C.O.N.S.O.L.E (Paris). 
@@ -524,12 +529,16 @@ For more info about the idea: </p><a href="https://www.ctm-festival.de/festival-
 
         <>
         <h3>自動存檔：堡壘 2018年</h3>
+        <div className="artistflex">
         <h4>陸浩明</h4>
         <h4>亞歷克斯·麥爾斯</h4>
         <h4>彼得·倪爾森</h4>
+        </div>
+        <div className="artistflex">
         <a href="www.andrewluk.com" target="_blank">www.andrewluk.com</a>
         <a href="www.alexismailles.com" target="_blank">www.alexismailles.com</a>
         <a href="www.peteracnelson.com" target="_blank">www.peteracnelson.com</a>
+        </div>
         <p>Autosave: Redoubt is made to be a playable map for the computer game Counter-Strike: Global Offensive. It is a site-specific recreation of the WWII bunkers and tunnels of the Kowloon Peninsula built by the British during the 1930s. This piece taps into the dysfunctional military architecture of the historical site as well as the contradictions embedded in the 3D computer game technology for virtual archaeology — the more realistic the site recreation became, the less playable it became as a computer game.
 Andrew Luk is a Hong Kong artist who works across a range of media examining the intricacies of the human experience as well as the myths and histories associated with civilisation building. His work has been exhibited internationally including in Asia Society (Hong Kong), Tai Kwun Contemporary (Hong Kong), HOW Art Museum (Shanghai), and Kula Bazaar ACC (Gwangju). 
 Alexis Mailles produces hybrid installations that border the frontiers of Arte Povera and cyberpunk styles by using digital and analogue techniques. He has exhibited worldwide, including the M21 Museum (Shanghai), the 18th Street Art Center (Los Angeles), the Digital Art Center (Taipei), and Espace C.O.N.S.O.L.E (Paris). 
