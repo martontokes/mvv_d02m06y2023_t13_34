@@ -217,11 +217,11 @@ function EnglishMenu({ setPage }) {
     <>
 
       <div id="uppermenu">
-      <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>curatorial statement</button>
-      <div id="title">
       <img id="enlogo" src="/metroenlogo.svg" />
-      </div>
+      <div id="engright">
+      <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>curatorial statement</button>
       <button className="menubutton essay" onClick={() => changeContent('essay')}>essay about the exhibition</button>
+      </div>
       </div>
       <div id="buttonflex">
       <button className="menubutton autosave" onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
@@ -367,7 +367,7 @@ Alexis Mailles produces hybrid installations that border the frontiers of Arte P
 Peter Nelson is a visual artist and academic working at the intersection of landscape theory and computer games. Originally trained in painting and drawing, Nelson currently produces exhibitions across a number of media, from painting and drawing, to animation, 3D printed sculpture and interactive game-based systems. He has held numerous group and solo exhibitions, including projects with HanArt TZ Gallery (Hong Kong), The National Palace Museum (Taiwan), The Sichuan Fine Art Academy Museum (Chongqing) and the K11 Art Foundation (Hong Kong). He is an Assistant Professor at Hong Kong Baptist University.</p>
 <button>Download Counter Strike: Global Offensive</button>
 <button>Download Autosave: Redoubt</button>
-<img src="/arlogo.png"></img>
+<img className="arlogo" src="/arlogo.png"></img>
 <iframe src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen=""
   />
   <iframe
@@ -398,7 +398,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
         <a href="www.vvzela.co" target="_blank">www.vvzela.co</a>
         <p>Confidential Records: Dual Metropolitans utilizes 3D animation to reconstruct the cyberspace of Kowloon Walled City and imagine what it would be like in the future governed by artificial intelligence. In reality, as an enclave inside Hong Kong during British colonization, Kowloon Walled City developed into a huge and comprehensive urban system. Ungoverned and outlandish, it has long served as an inspiration for cyberpunk-themed artworks. Kook’s project combines history, myth, and sci-fi narratives with digital media to dig into the aesthetics and architecture of dystopia.
         Vvzela Kook is a new media artist who mainly works in audiovisual mediums, including performance, theater, generative art and drawing. Kook’s works combine technology with her artistic practice to reproduce and convert urban cityscapes into an integrated virtual experience, guiding the audience on a cybernetic journey. Kook has participated and shown her works in Kathmandu Triennial, MoCA Taipei, Microwave International Media Festival (Hong Kong), PuSh Performing Art Festival (Vancouver), and Mill6 Foundation (Hong Kong)</p>
-        <iframe title="vimeo-player" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" id="confreciframe" allowFullScreen></iframe>
+        <iframe className="fullWidth" title="vimeo-player" frameBorder="no" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" id="confreciframe" allowFullScreen></iframe>
         </>
   
       )
@@ -545,7 +545,7 @@ Alexis Mailles produces hybrid installations that border the frontiers of Arte P
 Peter Nelson is a visual artist and academic working at the intersection of landscape theory and computer games. Originally trained in painting and drawing, Nelson currently produces exhibitions across a number of media, from painting and drawing, to animation, 3D printed sculpture and interactive game-based systems. He has held numerous group and solo exhibitions, including projects with HanArt TZ Gallery (Hong Kong), The National Palace Museum (Taiwan), The Sichuan Fine Art Academy Museum (Chongqing) and the K11 Art Foundation (Hong Kong). He is an Assistant Professor at Hong Kong Baptist University.</p>
 <button>Download Counter Strike: Global Offensive</button>
 <button>Download Autosave: Redoubt</button>
-<img src="/arlogo.png"></img>
+<img className="arlogo" src="/arlogo.png"></img>
 <iframe
     src="https://www.youtube.com/embed/I3Mr4dbVDy4"
 
@@ -582,7 +582,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
 亞歷克斯·麥爾斯運用數碼和模擬技術來創作混合裝置，其作品橫跨貧窮藝術與賽博朋克的前沿。他的作品曾展出於二十一世紀民生美術館（上海）、第十八街藝術中心（洛杉磯）、數位藝術中心（臺北）和Espace C.O.N.S.O.L.E（巴黎）。
 彼得·倪爾森是一名視覺藝術家和學術研究者。他的創作結合景觀理論和計算機游戲。繪畫訓練出身的倪爾森現創作的媒介包括繪畫、動畫、3D打印雕塑和交互式游戲系統。他的作品曾展於漢雅軒（香港）、國立故宮博物院（台灣）、四川美術學院美術館（重慶）和K11藝術基金會（香港）。倪爾森現任香港浸會大學助理教授。
 </p>
-<iframe title="vimeo-player" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" id="confreciframe" allowFullScreen></iframe>
+<iframe className="fullWidth" title="vimeo-player" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" id="confreciframe" frameBorder="no" allowFullScreen></iframe>
         </>
   
       )
