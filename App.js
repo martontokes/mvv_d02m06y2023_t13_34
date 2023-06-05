@@ -338,7 +338,7 @@ function Content( { page, language } ) {
           <br /><br />Andrew Luk, Alexis Mailles, and Peter Nelson recreated the WWII bunkers and tunnels in Kowloon Peninsula to allow game players to immerse themselves in a historical site. Vvzela Kook’s animation presents the myth of a survived, hidden underground Kowloon Walled City, reigned by artificial intelligence. Kat Suryna’s pastel delineated the spiritual spaces she experienced in Hong Kong by way of a demonic online persona that looms in the transformation of Buddha’s face. Elaine Wong projected the moving image of cityscape onto her own living room as broken-down frames in 360° panorama, commenting on the fragmentation of city space as a result of spatial capitalization as well as gendered demarcation. Also reflecting on the division of the public/domestic, Riar Rizaldi mixed the soundscape of Victoria Park on Sunday, where Indonesian domestic workers enjoy their weekly day off, with composed noise of household utensils, to virtually ‘suture’ these women workers’ separated worlds.
         </p>
         <p className="firstaddendum">
-          * Shih Shu-ching  |  1997
+          * Shih Shu-ching&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1997
         <br /><br />
           City of the Queen: A Novel of Colonial Hong Kong
           Hung-fan Bookstore.
@@ -362,7 +362,6 @@ function Content( { page, language } ) {
         <br /><br />Ever since the pandemic in 2020, difficulties in international travel barred people from returning home. Just like social media, a representation of Hong Kong in the parallel digital universe can satisfy some of our emotional needs, providing an escape for some people from reality. Technology may have a dangerous tendency to weaken people’s real-life interactions. However, engaging in fantasies in the virtual world is not all that detrimental. Virtual worlds may also provide us with new perspectives to approach the real world. In an interview with Riar Rizaldi, he said, “I tried to make a soundscape that a friend of mine, a domestic worker, can also listen to on their weekends to somehow enjoy their time, so it’s like something I also want to present, giving back the knowledge they (domestic workers) gave me.”
         </p>
         <p>Sharon Xiaorong Liu   |   2022 / 04 / 26 </p>
-        <div id="marginbottom">s</div>
         </>
   
       )
@@ -389,8 +388,8 @@ Alexis Mailles produces hybrid installations that border the frontiers of Arte P
 Peter Nelson is a visual artist and academic working at the intersection of landscape theory and computer games. Originally trained in painting and drawing, Nelson currently produces exhibitions across a number of media, from painting and drawing, to animation, 3D printed sculpture and interactive game-based systems. He has held numerous group and solo exhibitions, including projects with HanArt TZ Gallery (Hong Kong), The National Palace Museum (Taiwan), The Sichuan Fine Art Academy Museum (Chongqing) and the K11 Art Foundation (Hong Kong). He is an Assistant Professor at Hong Kong Baptist University.</p>
 <div id="armidmenu">
 <img className="arlogo" src="/arlogo.png"/>
-<button className="xp"><img src="/encsbut.svg"></img></button>
-<button  className="xp"><img src="/enarbut.svg"></img></button>
+<button className="xp"><a href="https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/" target="_blank"><img src="/encsbut.svg"></img></a></button>
+<button className="xp"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1180213005&searchtext=Autosave%3A+Redoubt" target="_blank"><img src="/enarbut.svg"></img></a></button>
 </div>
 <div id="asytcontainer">
   <iframe className='autosaveVid' src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen="" frameborder="no"/>
@@ -575,8 +574,8 @@ For more info about the idea: <span><a href="https://www.ctm-festival.de/festiva
 </p>
 <div id="armidmenu">
 <img className="arlogo" src="/arlogo.png"/>
-<button className="xp"><img src="/chcsbut.svg"></img></button>
-<button  className="xp"><img src="/charbut.svg"></img></button>
+<button className="xp"><a href="https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/" target="_blank"><img src="/chcsbut.svg"></img></a></button>
+<button className="xp"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1180213005&searchtext=Autosave%3A+Redoubt" target="_blank"><img src="/charbut.svg"></img></a></button>
 </div>
 <div id="asytcontainer">
   <iframe className='autosaveVid' src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen="" frameborder="no"/>

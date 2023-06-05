@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 4rem;
-    margin-top: 4rem;
+    margin-top: 0;
 }
 
 #asytcontainer {
@@ -92,6 +92,7 @@
     display: grid;
     width: 100%;
     grid-template-columns: auto 1fr;
+    margin-bottom: 2rem;
 
 }
 
@@ -127,13 +128,14 @@
 
 #zhmenuleft {
     justify-self: end;
-    align-self: end;
+    align-self: center;
 
 }
 
 #engright {
     position: absolute;
     right: 10%;
+    align-self: center;
 
 }
 
