@@ -405,7 +405,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
       case 'confidential':
 
       function getVid() {
-        let getVid = document.getElementById("confreciframe");
+        var getVid = document.getElementById("confreciframe");
         console.log(getVid.offsetWidth);
         getVid.style.height = (getVid.offsetWidth / 3.55848011083) + "px";
       }
@@ -591,10 +591,10 @@ For more info about the idea: <span><a href="https://www.ctm-festival.de/festiva
       case 'confidential':
 
       
-      function getVid2() {
-        let getVid2 = document.getElementById("confreciframe");
+      function getVid() {
+        var getVid = document.getElementById("confreciframe");
 
-        getVid2.style.height = (getVid.offsetWidth / 3.55848011083) + "px";
+        getVid.style.height = (getVid.offsetWidth / 3.55848011083) + "px";
       }
 
       return (
@@ -609,8 +609,8 @@ For more info about the idea: <span><a href="https://www.ctm-festival.de/festiva
 彼得·倪爾森是一名視覺藝術家和學術研究者。他的創作結合景觀理論和計算機游戲。繪畫訓練出身的倪爾森現創作的媒介包括繪畫、動畫、3D打印雕塑和交互式游戲系統。他的作品曾展於漢雅軒（香港）、國立故宮博物院（台灣）、四川美術學院美術館（重慶）和K11藝術基金會（香港）。倪爾森現任香港浸會大學助理教授。
 </p>
 <iframe id="confreciframe" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" width="100%;" height="100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        { setTimeout(()=>{getVid2()}, 50) }
-        { window.addEventListener("resize", getVid2) }
+        { setTimeout(()=>{getVid()}, 50) }
+        { window.addEventListener("resize", getVid) }
         </>
   
       )
