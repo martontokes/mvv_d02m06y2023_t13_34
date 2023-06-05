@@ -722,6 +722,8 @@ async function buddhachanger() {
   setInterval(() => {
 
     if (direction == 'down') {
+
+      if (buddhaimages[index] != undefined) {
       buddhaimages[index].classList.remove("op1");
       buddhaimages[index].classList.add("op0");
       index -= 1;
@@ -729,8 +731,11 @@ async function buddhachanger() {
           if (index == 1) {
             direction = "up";
           }
-
+        }
     } else if (direction == 'up') {
+
+      if (buddhaimages[index] != undefined) {
+
       buddhaimages[index].classList.remove("op0");
       buddhaimages[index].classList.add("op1");
       index += 1;
@@ -738,6 +743,7 @@ async function buddhachanger() {
           if (index == 4) {
             direction = "down";
           }
+      }
     }
   }, 5000);
 }
