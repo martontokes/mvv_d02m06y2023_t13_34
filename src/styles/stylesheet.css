@@ -118,7 +118,7 @@
 }
 
 #enlogo {
-    width: 14vw;
+    width: 17vw;
 }
 
 #chtitle h3 {
@@ -135,7 +135,7 @@
 #engright {
     position: absolute;
     right: 10%;
-    align-self: center;
+    align-self: start;
 
 }
 
@@ -145,7 +145,7 @@
 
 #uppermenu {
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .arlogo {
@@ -241,7 +241,7 @@ body {
 }
 
 #content {
-    margin: 5% 10%;
+    margin: 3% 10%;
 }
 
 #welcomeContainer {

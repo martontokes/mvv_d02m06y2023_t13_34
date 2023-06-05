@@ -19,6 +19,7 @@ export default function App() {
 
     <>
       {componentToRender}
+      <iframe id="confreciframe" frameborder="no" />
     </>
   );
 
@@ -404,6 +405,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
       case 'confidential':
 
       function getVid() {
+        
         var getVid = document.getElementById("confreciframe");
         console.log(getVid.offsetWidth);
         getVid.style.height = (getVid.offsetWidth / 3.55848011083) + "px";
@@ -481,7 +483,7 @@ For more info about the idea: <span><a href="https://www.ctm-festival.de/festiva
 <>
   <iframe
     width="100%"
-    height={300}
+    height={100}
     scrolling="no"
     frameBorder="no"
     allow="autoplay"
@@ -591,9 +593,14 @@ For more info about the idea: <span><a href="https://www.ctm-festival.de/festiva
 
       
       function getVid() {
+        
+        if (page == 'confidential') {
         var getVid = document.getElementById("confreciframe");
 
         getVid.style.height = (getVid.offsetWidth / 3.55848011083) + "px";
+
+
+      }
       }
 
       return (
@@ -666,7 +673,7 @@ For more info about the idea: <span><a href="https://www.ctm-festival.de/festiva
  <>
   <iframe
     width="100%"
-    height={300}
+    height={100}
     scrolling="no"
     frameBorder="no"
     allow="autoplay"
