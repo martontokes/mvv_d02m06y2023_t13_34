@@ -94,7 +94,7 @@ if (document.getElementById("content") != null && document.getElementById("conte
     conditionalMenu = (
       <>
         <Header language={language} />
-        <BurgerMenu />
+
         <Content />
         <PageIndicator />
       </>
@@ -125,19 +125,27 @@ function Header({ language }) {
   if (language === "english") {
     return (
       <>
-        <h1 className="welcometitle">metro via virtual</h1>
-        <h5 className="welcomesubtitle">a virtual exhibition from Hong Kong</h5>
+        <div className="mheader">
+        <img id="mobillogoen" src="/mobillogoen.svg"></img>
+        <BurgerMenu />
+        </div>
+
+
       </>
     );
   } else {
     return (
       <>
-        <h1 id="chwelc" className="welcometitle">
+              <div className="mheader">
+        <h1 id="chwelc" className="headerinline" className="welcometitle">
           虛擬都會
         </h1>
-        <h5 id="chsub" className="welcomesubtitle">
+        <h5 id="chsub" className="headerinline"  className="welcomesubtitle">
           來自香港的線上展覽
         </h5>
+
+        </div>
+        <BurgerMenu />
       </>
     );
   }
@@ -202,7 +210,7 @@ function LanguageButton({ language, setLanguage, setPage, page }) {
 
 function BurgerMenu() {
   return (
-    <button><img src="/burgerbutton.svg"></img></button>
+    <button id="burgerbutton"><img src="/burgerbutton.svg"></img></button>
   )
 }
 

@@ -281,7 +281,36 @@ body {
 
 }
 
+.mheader {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
+    position: fixed;
+    width: 100vw;
+    left: 0px;
+    top: 0px;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 10vw;
+}
 
+.headerinline {
+    display: inline;
+}
+
+
+#burgerbutton {
+    position: fixed;
+    right: 10vw;
+    top: 6vh;
+
+}
+
+#burgerbutton img {
+    width: 6.621875000000001vw;
+}
+
+#mobillogoen {
+    width: 60vw;
+}
 
 @media screen and (min-width: 600px) {
 
@@ -289,24 +318,24 @@ body {
     margin-top: 30px;
     font-size: 50px;
     opacity: inherit;
-    transition: inherit;
+    transition: opacity 2s;
 }
 
 .welcometitle {
     font-size: 60px;
     opacity: inherit;
-    transition: inherit;
+    transition: opacity 2s;
 }
 
 .welcomesubtitle {
     opacity: inherit;
-    transition: inherit;
+    transition: opacity 2s;
     font-size: 30px;
 }
 
 .enterbutton {
     opacity: inherit;
-    transition: inherit;
+    transition: opacity 2s;
     margin-top: 10px;
     font-size: 36px;
     background: black;
@@ -335,13 +364,15 @@ body {
     }
 
     .welcometitle {
-        font-size: 30px;
+        font-size: 1.55625rem;
         opacity: inherit;
         transition: inherit;
     }
     
+
+
     .welcomesubtitle {
-        font-size: 16px;
+        font-size: 1.25490196078rem;
         opacity: inherit;
         transition: inherit;
     }
