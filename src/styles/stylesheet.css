@@ -304,6 +304,30 @@ body {
 
 }
 
+.indicator {
+    height: 2vh;
+    width: 5vw;
+}
+
+#pageindicator {
+    background-color: black;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 10vh;
+    z-index: 1;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pageindicators img {
+    padding: 0.5vw;
+
+
+}
+
 #burgerbutton img {
     width: 6.621875000000001vw;
 }

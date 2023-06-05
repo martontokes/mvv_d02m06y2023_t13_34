@@ -96,7 +96,7 @@ if (document.getElementById("content") != null && document.getElementById("conte
         <Header language={language} />
 
         <Content />
-        <PageIndicator />
+        <PageIndicator language={language} />
       </>
     );
   } else {
@@ -323,7 +323,43 @@ function ChineseMenu({ setPage }) {
 
 
 
-function PageIndicator({ page }) {
+function PageIndicator({ page, language }) {
+
+  if (language == 'english') { 
+
+    return (
+
+      <>
+        <div id="pageindicator">
+          <div id="pageindicators">
+            <img className="indicator" src="/indicator.svg"></img>
+            <img className="indicator" src="/indicator.svg"></img>
+            <img className="indicator" src="/indicator.svg"></img>
+            <img className="indicator" src="/indicator.svg"></img>
+            <img className="indicator" src="/indicator.svg"></img>
+          </div>
+        </div>
+      </>
+  
+    )
+
+  } else {
+
+  }
+
+  return (
+
+    <>
+        <div id="pageindicator">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+    </>
+
+  )
 
 }
 
