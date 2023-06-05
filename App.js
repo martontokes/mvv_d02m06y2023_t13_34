@@ -42,7 +42,11 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
       setTimeout(() => {
       setLanguage('english');
       let initialunderscore = document.getElementsByClassName("curatorial");
-      setTimeout(() => {initialunderscore[0].classList.add("menuButtonActive");}, 50);
+      setTimeout(() => {
+        if (initialunderscore[0] != undefined) {
+        initialunderscore[0].classList.add("menuButtonActive");
+        }
+      }, 50);
     }, 2000);
     };
   
@@ -50,7 +54,11 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
       setTimeout(() => {
       setLanguage('chinese');
       let initialunderscore = document.getElementsByClassName("curatorial");
-      setTimeout(() => {initialunderscore[0].classList.add("menuButtonActive");}, 50);
+      setTimeout(() => {
+        if (initialunderscore[0] != undefined) {
+        initialunderscore[0].classList.add("menuButtonActive");
+        }
+      }, 50);
     }, 2000);
     };
   
@@ -193,7 +201,7 @@ function LanguageButton({ language, setLanguage, setPage, page }) {
 
 function BurgerMenu() {
   return (
-    <button><img src="/burgerbutton.png"></img></button>
+    <button><img src="/burgerbutton.svg"></img></button>
   )
 }
 
@@ -326,13 +334,12 @@ function Content( { page, language } ) {
         <h3>Curatorial statement</h3>
         <p>
           Shih Shu-ching, in writing her Hong Kong trilogy, came across a specimen of eurema hecabe, a small pierid butterfly species commonly found in Hong Kong. Shih* used eurema hecabe as an analogy of the city, writing that this butterfly 'contains a decisive force to challenge its fate, albeit covered by its delicate, fragile appearance.'
-          While literary works tend to narrate the stories of the city via its complicated history, contemporary art is open to diverse perspectives that center nonlinearity and indeterminacy. Critically unpacking the imagery of Hong Kong, the virtual exhibition Metro Via Virtual features artworks that tap into the topics of history, myth, religion, capital, gender, and race. Such multilayered representations are intertwined with multimedia experiments, ranging from interactive game-based system, 3D animation, figurative art and 360° video, to sound art. The result is a symphony of the metropolis, albeit the texture, the size, and the site of specific media are somewhat compromised by the virtual nature of the exhibition.
-          Andrew Luk, Alexis Mailles, and Peter Nelson recreated the WWII bunkers and tunnels in Kowloon Peninsula to allow game players to immerse themselves in a historical site. Vvzela Kook’s animation presents the myth of a survived, hidden underground Kowloon Walled City, reigned by artificial intelligence. Kat Suryna’s pastel delineated the spiritual spaces she experienced in Hong Kong by way of a demonic online persona that looms in the transformation of Buddha’s face. Elaine Wong projected the moving image of cityscape onto her own living room as broken-down frames in 360° panorama, commenting on the fragmentation of city space as a result of spatial capitalization as well as gendered demarcation. Also reflecting on the division of the public/domestic, Riar Rizaldi mixed the soundscape of Victoria Park on Sunday, where Indonesian domestic workers enjoy their weekly day off, with composed noise of household utensils, to virtually ‘suture’ these women workers’ separated worlds.
+          While literary works tend to narrate the stories of the city via its complicated history, contemporary art is open to diverse perspectives that center nonlinearity and indeterminacy.<br /><br />Critically unpacking the imagery of Hong Kong, the virtual exhibition Metro Via Virtual features artworks that tap into the topics of history, myth, religion, capital, gender, and race. Such multilayered representations are intertwined with multimedia experiments, ranging from interactive game-based system, 3D animation, figurative art and 360° video, to sound art. The result is a symphony of the metropolis, albeit the texture, the size, and the site of specific media are somewhat compromised by the virtual nature of the exhibition.
+          <br /><br />Andrew Luk, Alexis Mailles, and Peter Nelson recreated the WWII bunkers and tunnels in Kowloon Peninsula to allow game players to immerse themselves in a historical site. Vvzela Kook’s animation presents the myth of a survived, hidden underground Kowloon Walled City, reigned by artificial intelligence. Kat Suryna’s pastel delineated the spiritual spaces she experienced in Hong Kong by way of a demonic online persona that looms in the transformation of Buddha’s face. Elaine Wong projected the moving image of cityscape onto her own living room as broken-down frames in 360° panorama, commenting on the fragmentation of city space as a result of spatial capitalization as well as gendered demarcation. Also reflecting on the division of the public/domestic, Riar Rizaldi mixed the soundscape of Victoria Park on Sunday, where Indonesian domestic workers enjoy their weekly day off, with composed noise of household utensils, to virtually ‘suture’ these women workers’ separated worlds.
         </p>
         <p className="firstaddendum">
           * Shih Shu-ching  |  1997
-        </p>
-        <p className="secondaddendum">
+        <br /><br />
           City of the Queen: A Novel of Colonial Hong Kong
           Hung-fan Bookstore.
         </p>
@@ -532,6 +539,9 @@ For more info about the idea: </p><a href="https://www.ctm-festival.de/festival-
         尺寸和場地屬性不得不因線上的展示而受到折衷。
         陸浩明、亞歷克斯·麥爾斯和彼得·倪爾森還原了二戰時在九龍半島修建的壕溝與隧道，讓游戲玩家可以虛擬地置身於此歷史現場。曲淵澈的動畫結合歷史、傳說與幻想，設計出一個由人工智能所統治的、藏匿於地下的九龍城寨。一個邪惡的網絡人格若隱若現地浮顯出Kat Suryna 所 畫的亦正亦邪的佛像中，以此表達她在香港體驗到的精神空間。黃淑賢以360° 全景將香港城市景觀的流動影像投射在她的居室中，回應在資本的侵蝕下所導致的城市空間碎片化和空間上的性別劃界問題。同樣關注公共空間與家居空間的分隔，
         Riar Rizaldi 將星期天維多利亞公園裏印尼裔家傭休閒活動的聲音，與他所編排的家用器皿的噪音混錄在一起，以「縫合」這些女性家傭被強迫分割的聲音空間。
+        <br /><br />
+        ＊施叔青  |  1997年<br /><br />
+        《香港三部曲之1: 她名叫蝴蝶》，洪範書店有限公司
         </p>
       </>
 
@@ -596,7 +606,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
 亞歷克斯·麥爾斯運用數碼和模擬技術來創作混合裝置，其作品橫跨貧窮藝術與賽博朋克的前沿。他的作品曾展出於二十一世紀民生美術館（上海）、第十八街藝術中心（洛杉磯）、數位藝術中心（臺北）和Espace C.O.N.S.O.L.E（巴黎）。
 彼得·倪爾森是一名視覺藝術家和學術研究者。他的創作結合景觀理論和計算機游戲。繪畫訓練出身的倪爾森現創作的媒介包括繪畫、動畫、3D打印雕塑和交互式游戲系統。他的作品曾展於漢雅軒（香港）、國立故宮博物院（台灣）、四川美術學院美術館（重慶）和K11藝術基金會（香港）。倪爾森現任香港浸會大學助理教授。
 </p>
-<iframe className="fullWidth" title="vimeo-player" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" id="confreciframe" frameBorder="no" allowFullScreen></iframe>
+<iframe src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" width="100%;" height="100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </>
   
       )

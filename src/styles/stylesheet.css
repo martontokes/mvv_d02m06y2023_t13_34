@@ -26,17 +26,15 @@
 
 }
 
-.fullWidth {
-    width: 100%;
-    height: 500px;
-}
-
-
 #title h2 {
     display: flex;
     flex-direction: row;
     justify-content: center;
 
+}
+
+.fullWidth {
+    width: 100%;
 }
 
 .upperMenuZh {
