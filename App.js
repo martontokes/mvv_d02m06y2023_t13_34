@@ -419,7 +419,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
 
       case 'illumination':
 
-      setTimeout(() => { buddhachanger();}, 200);
+   buddhachanger();
 
       return (
 
@@ -715,52 +715,28 @@ Peter Nelson is a visual artist and academic working at the intersection of land
 async function buddhachanger() {
 
   const buddhaimages = document.getElementsByClassName("buddhaposition");
-
   let index = 4;
   let direction = 'down';
-  let firstPeriod = 'true';
 
   setInterval(() => {
 
-      if (firstPeriod == 'true') {
-
-      firstPeriod = 'false';
-      
-        
-      } else {
-
-      if (direction == 'down') {
-
+    if (direction == 'down') {
       buddhaimages[index].classList.remove("op1");
       buddhaimages[index].classList.add("op0");
-
       index -= 1;
 
+          if (index == 1) {
+            direction = "up";
+          }
 
-      if (index == 1) {
-        direction = "up";
-
-      }
-
-      } else if (direction == 'up') {
-        
+    } else if (direction == 'up') {
       buddhaimages[index].classList.remove("op0");
       buddhaimages[index].classList.add("op1");
-
       index += 1;
 
-      if (index == 4) {
-        direction = "down";
-
-      }
-
-      }
-
-
-
+          if (index == 4) {
+            direction = "down";
+          }
     }
-
   }, 5000);
-
 }
-
