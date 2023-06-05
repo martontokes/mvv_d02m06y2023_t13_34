@@ -404,6 +404,8 @@ Peter Nelson is a visual artist and academic working at the intersection of land
       
       case 'confidential':
 
+
+
       return (
 
         <>
@@ -412,7 +414,8 @@ Peter Nelson is a visual artist and academic working at the intersection of land
         <a href="www.vvzela.co" target="_blank">www.vvzela.co</a>
         <p>Confidential Records: Dual Metropolitans utilizes 3D animation to reconstruct the cyberspace of Kowloon Walled City and imagine what it would be like in the future governed by artificial intelligence. In reality, as an enclave inside Hong Kong during British colonization, Kowloon Walled City developed into a huge and comprehensive urban system. Ungoverned and outlandish, it has long served as an inspiration for cyberpunk-themed artworks. Kook’s project combines history, myth, and sci-fi narratives with digital media to dig into the aesthetics and architecture of dystopia.
         Vvzela Kook is a new media artist who mainly works in audiovisual mediums, including performance, theater, generative art and drawing. Kook’s works combine technology with her artistic practice to reproduce and convert urban cityscapes into an integrated virtual experience, guiding the audience on a cybernetic journey. Kook has participated and shown her works in Kathmandu Triennial, MoCA Taipei, Microwave International Media Festival (Hong Kong), PuSh Performing Art Festival (Vancouver), and Mill6 Foundation (Hong Kong)</p>
-        <iframe className="fullWidth" title="vimeo-player" frameBorder="no" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" id="confreciframe" allowFullScreen></iframe>
+        <iframe id="vimeovid" width="100%" title="vimeo-player" frameBorder="no" src="https://player.vimeo.com/video/297653544?h=4ccbbb86fe" id="confreciframe" allowFullScreen></iframe>
+
         </>
   
       )
@@ -467,10 +470,10 @@ Elaine Wong explores and unveils the manifolds of daily encounters and inner con
         <h4>Riar Rizaldi</h4>
         <a href="www.riarrizaldi.com" target="_blank">www.riarrizaldi.com</a>
         <p>Domestik/Publik reflects the notions of sound and spatial knowledge as conceived by Indonesian domestic migrant workers in Hong Kong. The first part of the piece focuses on a ‘public ear’ while the second half is an investigation into a ‘domestic ear.’ A soundscape of Sunday at Victoria Park, the weekly women’s rights speech, public radio-karaoke, the soundtrack for Jaranan dance and a composed noise of domestic utensils are presented in this sonic-narrative that mimics the aesthetic of radio play.
-Riar Rizaldi works as an artist and amateur researcher. Born in Indonesia and currently based in Hong Kong. His main focus is on the relationship between capital and technology, extractivism, and theoretical fiction. Through his works, he questions the notions of image politics, materiality, media archaeology and unanticipated consequences of technologies. His works have been shown at Locarno Film Festival, BFI Southbank London, International Film Festival Rotterdam, NTT InterCommunication Center Tokyo, and National Gallery of Indonesia amongst others.
+<br /><br />Riar Rizaldi works as an artist and amateur researcher. Born in Indonesia and currently based in Hong Kong. His main focus is on the relationship between capital and technology, extractivism, and theoretical fiction. Through his works, he questions the notions of image politics, materiality, media archaeology and unanticipated consequences of technologies. His works have been shown at Locarno Film Festival, BFI Southbank London, International Film Festival Rotterdam, NTT InterCommunication Center Tokyo, and National Gallery of Indonesia amongst others.
 
-Domestik/Publik is part of Riar Rizaldi’s project The Right to Do Nothing. 
-For more info about the idea: </p><a href="https://www.ctm-festival.de/festival-2021/open-calls/ctm-radio-lab-2021">https://www.ctm-festival.de/festival-2021/open-calls/ctm-radio-lab-2021</a>
+<br /><br />Domestik/Publik is part of Riar Rizaldi’s project The Right to Do Nothing. 
+For more info about the idea: <span><a href="https://www.ctm-festival.de/festival-2021/open-calls/ctm-radio-lab-2021">https://www.ctm-festival.de/festival-2021/open-calls/ctm-radio-lab-2021</a></span></p>
 <>
   <iframe
     width="100%"
