@@ -41,12 +41,16 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
     const setEnglish = () => {
       setTimeout(() => {
       setLanguage('english');
+      let initialunderscore = document.getElementsByClassName("curatorial");
+      setTimeout(() => {initialunderscore[0].classList.add("menuButtonActive");}, 50);
     }, 2000);
     };
   
     const setChinese = () => {
       setTimeout(() => {
       setLanguage('chinese');
+      let initialunderscore = document.getElementsByClassName("curatorial");
+      setTimeout(() => {initialunderscore[0].classList.add("menuButtonActive");}, 50);
     }, 2000);
     };
   
@@ -153,7 +157,17 @@ function LanguageButton({ language, setLanguage, setPage, page }) {
 
       setTimeout(() => { menubuttons = document.getElementsByClassName(page);
         
-        menubuttons[0].classList.add("menuButtonActive"); }, 200);
+        if (menubuttons[0] === undefined) {
+
+        setPage("curatorial");
+        menubuttons = document.getElementsByClassName("menubutton");
+        menubuttons[0].classList.add("menuButtonActive");
+
+      } else {
+        menubuttons[0].classList.add("menuButtonActive"); 
+      }
+      
+      }, 200);
 
         }, 2000);
       };
