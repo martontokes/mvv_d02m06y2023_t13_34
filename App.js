@@ -453,8 +453,7 @@ Kat Suryna is an international figurative artist with a background in academic p
         <a href="www.miss-wong.com" target="_blank">www.miss-wong.com</a>
         <p>Butterflies on the Wheel hails from a cruel imagery – the butterflies flew into a blender and broke their wings. The artwork aims to experiment with videography regarding different forms of presentation through interaction with space. Wong videotaped the cityscape of Hong Kong, and shattered the moving images into broken-down frames. She then projected the images onto her own living room wall. The polygonal and limited space generated multiple reflections, resulting in the fragmentalization of images. It seems to critique the fractured conditions of life caused by the deteriorating spatial capitalization in the city, or perhaps contemplates the relationship between women and the imagery of claustrophobia that Wong has also explored.
 Elaine Wong explores and unveils the manifolds of daily encounters and inner conditions. She regards her practice as an investigation of the potentials of art beyond representation, its relation to sensation, documentation and experience. Her works have been shown internationally, 107 Projects (Australia), the Hong Kong Heritage Museum, Oi! Street Art Space (Hong Kong), EXIS Korea, and Poland Szczecin European Film Festival.</p>
-<button>Go inside the Room</button>
-<iframe src="/english/butterflies_en.htm"></iframe>
+<iframe className="butterfliesframe" frameBorder="no" src="/english/butterflies_en.htm"></iframe>
         </>
   
       )
@@ -643,8 +642,7 @@ Peter Nelson is a visual artist and academic working at the intersection of land
         <p>從蝴蝶偶然飛進攪拌機而折翼的殘酷意象出發，《碎蝶》意在打開錄像創作中關於媒介與空間的展示形式的實驗。黃氏將所攝錄的香港城市空間流動影像剪斷、定格，然後逐一投射到她的居室中。影像在多邊形的狹小空間裏形成重重折射，最終呈現出的破碎畫面似在隱喻被資本邏輯所侵佔的城市空間中生活的破裂，又或是沿續黃氏對女性與幽閉空間意象之間的精神層面的反思。
 黃淑賢探索並揭示生活及內在狀態的多種層面與複雜體驗。她關注藝術與感覺、記錄和體驗的關係，以及其超越表象的可能性。其作品曾展於107計劃（澳洲）、香港文化博物館、油街實現藝術空間（香港）、韓國EXiS流動影像媒體藝術節和波蘭什切青歐洲電影節。
 </p>
-<button>进入房间</button>
-<iframe src="/chinese/butterflies_ch.htm"></iframe>
+<iframe className="butterfliesframe" frameBorder="no" src="/chinese/butterflies_ch.htm"></iframe>
         </>
   
       )

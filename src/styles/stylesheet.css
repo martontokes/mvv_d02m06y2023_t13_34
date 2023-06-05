@@ -98,6 +98,11 @@
 
 }
 
+.butterfliesframe {
+    width: 100%;
+    height: 800px;
+}
+
 #chtitle {
 
     justify-self: center;
