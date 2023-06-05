@@ -329,7 +329,7 @@ function Content( { page, language } ) {
       case 'curatorial':
 
       return (
-
+ 
         <>
         <h3>Curatorial statement</h3>
         <p>
@@ -354,14 +354,15 @@ function Content( { page, language } ) {
         <>
         <h3>On the Role of Symbol Alienation in Art</h3>
         <p>Cities are built upon people’s individual and collective memories, which are themselves shaped by various visual and auditory symbols. In people’s memories of Hong Kong, cultural symbols including pedestrian crossings from Hong Kong TV drama, cramped fast-food restaurants in Wong Kar-Wai’s films, and Cantonese music comprise an alternate reality of the city. These symbols have designated contexts and meanings. However, new media art sometimes rearranges the contexts of symbols to give mobility to thoughts. In this online exhibition Metro Via Virtual, five groups of artists employ imageries of Hong Kong in their artworks to recreate locality. Being detached from reality and impressionistic, the cultural symbols in these artworks are allowed to take on a life of their own and create a complex and plural interpretation of Hong Kong.
-In this exhibition, some artists’ previous experience outside of Hong Kong help them observe subtle things about Hong Kong that local people tend to ignore. All five groups of artists combine knowledge from philosophy, media archaeology, video game design and technological development with art practice. They look at the local history, myth, religion, and demographics of Hong Kong, analyze it methodically, and create new media works about Hong Kong that are intricate and participatory.
-Artists’ choice of symbols and the detachment of their context give rise to a sense of alienation. These are cultural symbols that might exist but people are not familiar with them, or ones that people seem to be familiar with but do not exist. The artists then place these symbols outside of their original context and give new meanings to visuals or audio to form a utopian Hong Kong in the digital world. In these artists’ works appear shattered imageries of Hong Kong that emphasize a sense of messiness and dynamism in striking contrast to sleekness and hard boundaries. Andrew Luk, Alexis Mailles, and Peter Nelson’s Autosave: Redoubt (2018) is a computer game based on geo-locations and incomplete visual information of WWII bunkers and tunnels in Kowloon. Vvzela Kook’s Confidential Records: Dual Metropolitans (2016-2018) reconstructs parts of hallways and some aerial views of Kowloon Walled City during British colonization. Elaine Wong’s Butterflies on the Wheel (2020) is a video work featuring broken-down frames of Hong Kong cityscape videos, which were projected onto the wall in a room. Riar Rizaldi’s soundscape work Domestik/Publik (2020) assembles fragments of audio recordings of Indonesian domestic workers’ lives in Hong Kong. Kat Suryna’s Illumination (2021) is inspired by Buddhist images she saw in Hong Kong.
-Some artists explore new forms of artistic expression to find connections between cultural symbols of the Hong Kong urban landscape and human presence in the virtual city. Andrew Luk, Alexis Mailles, Peter Nelson, and Vvzela Kook ponder human agency in viewing a digital urban landscape—how a smart participatory art form can facilitate viewers’ understanding of a virtual Hong Kong and the worldview behind a game. In Autosave: Redoubt, the reconstruction does not pursue total realism. The nature of video games requires artists to strike a balance between fantasy and realism. The 3D reconstruction is not virtual reality. The visual manipulation should be in accordance with the setting of an unreal world, placing players in a liminal land to reflect on the rules of the game. In Kook’s Confidential Records: Dual Metropolitans, the 10-minute video includes a grand narrative like that of a sci-fi movie, talking about a future underground human Kowloon world battling the overground AI controlled city. What makes it distinctive from a sci-fi movie is how Kook employed both an AI perspective overseeing the overground city and a gamer’s perspective walking in the reconstructed 3D underground Kowloon city with a small real-time two-dimensional map. In this way, the video borrows the interactive effect of a video game. The virtual experience as a gamer encourages viewers to take initiatives to think about what viewers can do and how the architecture of Kowloon city stands between AI and human intelligence.
-The other three artists’ works are shown as a video, audio, or photos on the website. The presentation might seem straightforward, but the artists carefully consider how viewers would see and listen to the works. The way three works are presented online determines their interpretations. Elaine Wong turns photos into a curated video. Riar Rizaldi rearranges audio files into a radio play-like soundscape. Kat Suryna’s work images are shown on the website in a particular way to encourage a certain reading. Online exhibitions allow artists and the curator to have more control over viewers’ attention. For example, when Suryna exhibited Illumination in person, she noticed that sometimes people would approach her paintings from the wrong angle or the wrong direction. The online presentation would direct viewers’ attention to see a familiar image of Buddha in an unfamiliar way. Thus, viewers would notice the skewed or demonic side of the Buddha image. In an interview about the presentation format, Suryna concluded that, “I also think that re-mediation of a traditional artwork within digital media may add new, exciting layers of meaning and lead to a better appreciation of that artwork.” As she says, digital media as a medium detaches imageries from reality and endows artists with freedom to reinterpret them.
-Some might argue that this type of new media art utilizes and distorts cultural symbols, risking nihilism and history revisionism. Indeed, artworks in this exhibition do not aim to reflect and analyze some phenomena objectively and comprehensively. The fragmentation of cultural symbols in art could instead counter an authoritative narrative and help shape a more sophisticated and profound understanding of a city.
-Ever since the pandemic in 2020, difficulties in international travel barred people from returning home. Just like social media, a representation of Hong Kong in the parallel digital universe can satisfy some of our emotional needs, providing an escape for some people from reality. Technology may have a dangerous tendency to weaken people’s real-life interactions. However, engaging in fantasies in the virtual world is not all that detrimental. Virtual worlds may also provide us with new perspectives to approach the real world. In an interview with Riar Rizaldi, he said, “I tried to make a soundscape that a friend of mine, a domestic worker, can also listen to on their weekends to somehow enjoy their time, so it’s like something I also want to present, giving back the knowledge they (domestic workers) gave me.”
-</p>
-        <p>Sharon Xiaorong Liu  |  2022 / 04 / 26 </p>
+        <br /><br />In this exhibition, some artists’ previous experience outside of Hong Kong help them observe subtle things about Hong Kong that local people tend to ignore. All five groups of artists combine knowledge from philosophy, media archaeology, video game design and technological development with art practice. They look at the local history, myth, religion, and demographics of Hong Kong, analyze it methodically, and create new media works about Hong Kong that are intricate and participatory.
+        Artists’ choice of symbols and the detachment of their context give rise to a sense of alienation. These are cultural symbols that might exist but people are not familiar with them, or ones that people seem to be familiar with but do not exist. The artists then place these symbols outside of their original context and give new meanings to visuals or audio to form a utopian Hong Kong in the digital world. In these artists’ works appear shattered imageries of Hong Kong that emphasize a sense of messiness and dynamism in striking contrast to sleekness and hard boundaries.         <br /><br />Andrew Luk, Alexis Mailles, and Peter Nelson’s Autosave: Redoubt (2018) is a computer game based on geo-locations and incomplete visual information of WWII bunkers and tunnels in Kowloon.<br /><br />Vvzela Kook’s Confidential Records: Dual Metropolitans (2016-2018) reconstructs parts of hallways and some aerial views of Kowloon Walled City during British colonization.         <br /><br />Elaine Wong’s Butterflies on the Wheel (2020) is a video work featuring broken-down frames of Hong Kong cityscape videos, which were projected onto the wall in a room.         <br /><br />Riar Rizaldi’s soundscape work Domestik/Publik (2020) assembles fragments of audio recordings of Indonesian domestic workers’ lives in Hong Kong.         <br /><br />Kat Suryna’s Illumination (2021) is inspired by Buddhist images she saw in Hong Kong. Some artists explore new forms of artistic expression to find connections between cultural symbols of the Hong Kong urban landscape and human presence in the virtual city.
+        <br /><br />Andrew Luk, Alexis Mailles, Peter Nelson, and Vvzela Kook ponder human agency in viewing a digital urban landscape—how a smart participatory art form can facilitate viewers’ understanding of a virtual Hong Kong and the worldview behind a game. In Autosave: Redoubt, the reconstruction does not pursue total realism. The nature of video games requires artists to strike a balance between fantasy and realism. The 3D reconstruction is not virtual reality. The visual manipulation should be in accordance with the setting of an unreal world, placing players in a liminal land to reflect on the rules of the game.         <br /><br />In Kook’s Confidential Records: Dual Metropolitans, the 10-minute video includes a grand narrative like that of a sci-fi movie, talking about a future underground human Kowloon world battling the overground AI controlled city. What makes it distinctive from a sci-fi movie is how Kook employed both an AI perspective overseeing the overground city and a gamer’s perspective walking in the reconstructed 3D underground Kowloon city with a small real-time two-dimensional map. In this way, the video borrows the interactive effect of a video game. The virtual experience as a gamer encourages viewers to take initiatives to think about what viewers can do and how the architecture of Kowloon city stands between AI and human intelligence.
+        The other three artists’ works are shown as a video, audio, or photos on the website. The presentation might seem straightforward, but the artists carefully consider how viewers would see and listen to the works. The way three works are presented online determines their interpretations. Elaine Wong turns photos into a curated video. Riar Rizaldi rearranges audio files into a radio play-like soundscape.         <br /><br />Kat Suryna’s work images are shown on the website in a particular way to encourage a certain reading. Online exhibitions allow artists and the curator to have more control over viewers’ attention. For example, when Suryna exhibited Illumination in person, she noticed that sometimes people would approach her paintings from the wrong angle or the wrong direction. The online presentation would direct viewers’ attention to see a familiar image of Buddha in an unfamiliar way. Thus, viewers would notice the skewed or demonic side of the Buddha image. In an interview about the presentation format, Suryna concluded that, “I also think that re-mediation of a traditional artwork within digital media may add new, exciting layers of meaning and lead to a better appreciation of that artwork.” As she says, digital media as a medium detaches imageries from reality and endows artists with freedom to reinterpret them.
+        Some might argue that this type of new media art utilizes and distorts cultural symbols, risking nihilism and history revisionism. Indeed, artworks in this exhibition do not aim to reflect and analyze some phenomena objectively and comprehensively. The fragmentation of cultural symbols in art could instead counter an authoritative narrative and help shape a more sophisticated and profound understanding of a city.
+        <br /><br />Ever since the pandemic in 2020, difficulties in international travel barred people from returning home. Just like social media, a representation of Hong Kong in the parallel digital universe can satisfy some of our emotional needs, providing an escape for some people from reality. Technology may have a dangerous tendency to weaken people’s real-life interactions. However, engaging in fantasies in the virtual world is not all that detrimental. Virtual worlds may also provide us with new perspectives to approach the real world. In an interview with Riar Rizaldi, he said, “I tried to make a soundscape that a friend of mine, a domestic worker, can also listen to on their weekends to somehow enjoy their time, so it’s like something I also want to present, giving back the knowledge they (domestic workers) gave me.”
+        </p>
+        <p>Sharon Xiaorong Liu   |   2022 / 04 / 26 </p>
+        <div id="marginbottom">s</div>
         </>
   
       )
@@ -386,25 +387,17 @@ Ever since the pandemic in 2020, difficulties in international travel barred peo
 Andrew Luk is a Hong Kong artist who works across a range of media examining the intricacies of the human experience as well as the myths and histories associated with civilisation building. His work has been exhibited internationally including in Asia Society (Hong Kong), Tai Kwun Contemporary (Hong Kong), HOW Art Museum (Shanghai), and Kula Bazaar ACC (Gwangju). 
 Alexis Mailles produces hybrid installations that border the frontiers of Arte Povera and cyberpunk styles by using digital and analogue techniques. He has exhibited worldwide, including the M21 Museum (Shanghai), the 18th Street Art Center (Los Angeles), the Digital Art Center (Taipei), and Espace C.O.N.S.O.L.E (Paris). 
 Peter Nelson is a visual artist and academic working at the intersection of landscape theory and computer games. Originally trained in painting and drawing, Nelson currently produces exhibitions across a number of media, from painting and drawing, to animation, 3D printed sculpture and interactive game-based systems. He has held numerous group and solo exhibitions, including projects with HanArt TZ Gallery (Hong Kong), The National Palace Museum (Taiwan), The Sichuan Fine Art Academy Museum (Chongqing) and the K11 Art Foundation (Hong Kong). He is an Assistant Professor at Hong Kong Baptist University.</p>
-<button>Download Counter Strike: Global Offensive</button>
-<button>Download Autosave: Redoubt</button>
-<img className="arlogo" src="/arlogo.png"></img>
-<iframe src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen=""
-  />
-  <iframe
-    src="https://www.youtube.com/embed/XvERO-f8wfE"
-
-    allowFullScreen=""
-  />
-  <iframe
-    src="https://www.youtube.com/embed/S1zhsv44qlU"
-
-    allowFullScreen=""
-  />
-  <iframe
-    src="https://www.youtube.com/embed/hW2qJiNeotc"
-    allowFullScreen=""
-  />
+<div id="armidmenu">
+<img className="arlogo" src="/arlogo.png"/>
+<button className="xp"><img src="/encsbut.svg"></img></button>
+<button  className="xp"><img src="/enarbut.svg"></img></button>
+</div>
+<div id="asytcontainer">
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen="" frameborder="no"/>
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/XvERO-f8wfE" allowFullScreen="" frameborder="no"/>
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/S1zhsv44qlU" allowFullScreen="" frameborder="no"/>
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/hW2qJiNeotc" allowFullScreen="" frameborder="no"/>
+  </div>
         </>
   
       )
@@ -426,6 +419,8 @@ Peter Nelson is a visual artist and academic working at the intersection of land
 
       case 'illumination':
 
+      setTimeout(() => { buddhachanger();}, 200);
+
       return (
 
         <>
@@ -434,11 +429,14 @@ Peter Nelson is a visual artist and academic working at the intersection of land
         <a href="www.katsuryna.com" target="_blank">www.katsuryna.com</a>
         <p>Illumination presents the transformation of Buddha’s face in five steps. Through the nuanced changes of light and colors, the Buddha’s varied looks reflect the different spiritual spaces that Suryna has experienced through living in Hong Kong. Lit by warm natural light, the benign face of Buddha is the image Hong Kong aims to achieve via the many Buddha statues in the city. In contrast, inspired by the faces of people on the streets as they stare in concentration at their phones, the demonic look of Buddha lit by cold screen light mirrors an unflattering persona we often encounter/perform online through anonymous identity. The animation is made in collaboration with Sandu Cojocari.
 Kat Suryna is an international figurative artist with a background in academic philosophy. She follows the tradition of Russian academic drawing and painting, in which she was formally instructed. Her work has been exhibited in Estonia, Hungary, Austria, and Hong Kong. Her art focuses on the human body, organic patterns in nature, and architectural narratives.</p>
-        <img src="/1.png"></img>
-        <img src="/2.png"></img>
-        <img src="/3.png"></img>
-        <img src="/4.png"></img>
-        <img src="/5.png"></img>
+       
+        <div id="buddhacontainer">
+        <img className="buddhaposition" id="buddha5" src="/5.png"></img>
+        <img className="buddhaposition" id="buddha4" src="/4.png"></img>
+        <img className="buddhaposition" id="buddha3" src="/3.png"></img>
+        <img className="buddhaposition" id="buddha2" src="/2.png"></img>
+        <img className="buddhaposition" id="buddha1" src="/1.png"></img>
+        </div>
         </>
 
         
@@ -613,6 +611,9 @@ Peter Nelson is a visual artist and academic working at the intersection of land
 
       case 'illumination':
 
+
+
+
       return (
 
         <>
@@ -709,3 +710,57 @@ Peter Nelson is a visual artist and academic working at the intersection of land
   }
 
 }
+
+
+async function buddhachanger() {
+
+  const buddhaimages = document.getElementsByClassName("buddhaposition");
+
+  let index = 4;
+  let direction = 'down';
+  let firstPeriod = 'true';
+
+  setInterval(() => {
+
+      if (firstPeriod == 'true') {
+
+      firstPeriod = 'false';
+      
+        
+      } else {
+
+      if (direction == 'down') {
+
+      buddhaimages[index].classList.remove("op1");
+      buddhaimages[index].classList.add("op0");
+
+      index -= 1;
+
+
+      if (index == 1) {
+        direction = "up";
+
+      }
+
+      } else if (direction == 'up') {
+        
+      buddhaimages[index].classList.remove("op0");
+      buddhaimages[index].classList.add("op1");
+
+      index += 1;
+
+      if (index == 4) {
+        direction = "down";
+
+      }
+
+      }
+
+
+
+    }
+
+  }, 5000);
+
+}
+
