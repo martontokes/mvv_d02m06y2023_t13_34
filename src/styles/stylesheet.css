@@ -22,6 +22,23 @@
 
 }
 
+#burgerMenuContent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+}
+
+#burgerMenuContentZh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+}
+
+
 #armidmenu {
     display: flex;
     justify-content: center;
@@ -93,7 +110,7 @@
     display: grid;
     width: 100%;
     grid-template-columns: auto 1fr;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 
 }
 
@@ -115,7 +132,7 @@
 
 
 #zhlogo {
-    width: 150px;
+    width:200px;
 }
 
 #enlogo {
@@ -129,7 +146,7 @@
 
 #zhmenuleft {
     justify-self: end;
-    align-self: center;
+    align-self: start;
 
 }
 
@@ -218,6 +235,12 @@ body {
     height: 100%;
 }
 
+#manual {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 75px !important;
+}
+
 .languageButton {
     position: fixed;
     right: 5%;
@@ -239,6 +262,34 @@ body {
     background: black;
     border-color: transparent;
 
+}
+
+.mobilemenu {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    transition: opacity 2s;
+}
+
+.mobilemenuActive {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
 }
 
 #content {
@@ -299,6 +350,7 @@ body {
     padding-top: 5vh;
     padding-bottom: 5vh;
     padding-left: 10vw;
+    z-index: 2;
 }
 
 .headerinline {
@@ -310,6 +362,7 @@ body {
     position: fixed;
     right: 10vw;
     top: 6vh;
+    z-index: 2;
 
 }
 

@@ -13,12 +13,13 @@ export default function App() {
   if (isWelcome) {
     componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
-    componentToRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage}/>;
+    componentToRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage} isBurger={isBurger} setBurger={setBurger}/>;
   }
 
   return (
 
     <>
+      <MobileMenu isBurger={isBurger} setBurger={setBurger} setPage={setPage} language={language} />
       {componentToRender}
       <iframe id="confreciframe" frameborder="no" />
     </>
@@ -82,7 +83,7 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
   }
 
 
-function ContentScreen({ page, language, setPage, setLanguage, isWelcome }) {
+function ContentScreen({ page, language, setPage, setLanguage, isWelcome, isBurger, setBurger }) {
 
 let conditionalMenu;
 
@@ -91,14 +92,10 @@ if (document.getElementById("content") != null && document.getElementById("conte
 }
 
 
-  
-
   if (isMobile) {
     conditionalMenu = (
       <>
-        <Header language={language} />
-
-        <Content />
+        <Header isBurger={isBurger} setBurger={setBurger} language={language} />
         <PageIndicator page={page} setPage={setPage} language={language} />
       </>
     );
@@ -125,14 +122,99 @@ if (document.getElementById("content") != null && document.getElementById("conte
   );
 }
 
+function MobileMenu({language, setPage, isBurger, setBurger}) {
 
-function Header({ language }) {
+
+
+  function changeContent(num) {
+
+    if (isBurger == false) {
+
+      var mobileMenu = document.getElementsByClassName("mobilemenu")[0];
+      mobileMenu.getElementById("contentToFade").style.opacity = 0;
+      setTimeout(() => {
+
+      mobileMenu.classList.remove("mobilemenu");
+      mobileMenu.classList.add("mobilemenuActive");
+
+
+      }, 2000)
+
+      setBurger(true);
+
+      } else if (isBurger == true) {
+
+      mobileMenu = document.getElementsByClassName("mobilemenuActive")[0];
+      mobileMenu.classList.remove("mobilemenuActive"); 
+      mobileMenu.classList.add("mobilemenu");
+      setBurger(false);
+
+      }
+
+   
+
+    let menubuttons = document.getElementsByClassName("menubutton");
+    for (let i = 0; i < menubuttons.length; i++ ) {
+      menubuttons[i].classList.remove("menuButtonActive"); 
+    }
+
+    menubuttons = document.getElementsByClassName(num);
+    for (let v = 0; v < menubuttons.length; v++ ) {
+      menubuttons[v].classList.add("menuButtonActive");
+    }
+
+    setTimeout(() => {
+    setPage(num);
+    setTimeout(  () => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
+ 
+     }, 2000);
+
+   }
+
+    if (language = "english") {
+
+    return (
+
+      <div className='mobilemenu'>
+      <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>curatorial statement</button>
+      <button className="menubutton essay" onClick={() => changeContent('essay')}>essay about the exhibition</button>
+      <button className="menubutton autosave" onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
+      <button className="menubutton confidential" onClick={() => changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
+      <button className="menubutton illumination" onClick={() => changeContent('illumination')}>Illumination</button>
+      <button className="menubutton butterflies" onClick={() => changeContent('butterflies')}>Butterflies on the Wheel</button>
+      <button className="menubutton domestik" onClick={() => changeContent('domestik')}>Domestik/Publik</button>
+      </div>
+
+    )
+
+
+    } else {
+
+    return (
+
+      <div className='mobilemenu'>
+      <button id="zhmenuleft" className="menubutton curatorial" onClick={() => changeContent('curatorial')}>策展論</button>
+      <button className="menubutton autosave" onClick={() => changeContent('autosave')}>自動存檔：堡壘</button>
+      <button className="menubutton confidential" onClick={() => changeContent('confidential')}>機密錄：雙城</button>
+      <button className="menubutton illumination" onClick={() => changeContent('illumination')}>啟示</button>
+      <button className="menubutton butterflies" onClick={() => changeContent('butterflies')}>黃淑賢</button>
+      <button className="menubutton domestik" onClick={() => changeContent('domestik')}>家居/公共</button>
+      </div>
+      
+    )
+  }
+}
+
+
+
+
+function Header({ language, isBurger, setBurger }) {
   if (language === "english") {
     return (
       <>
         <div className="mheader">
         <img id="mobillogoen" src="/mobillogoen.svg"></img>
-        <BurgerMenu />
+        <BurgerMenu isBurger={isBurger} setBurger={setBurger}/>
         </div>
 
 
@@ -150,7 +232,7 @@ function Header({ language }) {
         </h5>
 
         </div>
-        <BurgerMenu />
+        <BurgerMenu isBurger={isBurger} setBurger={setBurger} />
       </>
     );
   }
@@ -213,11 +295,32 @@ function LanguageButton({ language, setLanguage, setPage, page }) {
   return <>{buttonElement}</>;
 }
 
-function BurgerMenu() {
+
+function BurgerMenu({isBurger, setBurger}) {
+
+  const toggleMobileMenu = () => {
+    console.log(isBurger);
+      if (isBurger == false) {
+        var mobileMenu = document.getElementsByClassName("mobilemenu")[0];
+ 
+        mobileMenu.classList.remove("mobilemenu");
+        mobileMenu.classList.add("mobilemenuActive");
+        setBurger(true);
+
+        } else if (isBurger == true) {
+        mobileMenu = document.getElementsByClassName("mobilemenuActive")[0];
+        mobileMenu.classList.remove("mobilemenuActive"); 
+        mobileMenu.classList.add("mobilemenu");
+        setBurger(false);
+        }
+  }
+
   return (
-    <button id="burgerbutton"><img src="/burgerbutton.svg"></img></button>
+    <button id="burgerbutton" onClick={toggleMobileMenu}><img src="/burgerbutton.svg"></img></button>
   )
+  
 }
+
 
 function EnglishMenu({ setPage }) {
 
@@ -271,6 +374,9 @@ function EnglishMenu({ setPage }) {
 }
 
 
+
+
+
 function ChineseMenu({ setPage }) {
 
   function changeContent(num) {
@@ -315,7 +421,6 @@ function ChineseMenu({ setPage }) {
       <button id="zhmenuleft" className="menubutton curatorial" onClick={() => changeContent('curatorial')}>策展論</button>
       </div>
       <div id="buttonflex">
-
       <button className="menubutton autosave" onClick={() => changeContent('autosave')}>自動存檔：堡壘</button>
       <button className="menubutton confidential" onClick={() => changeContent('confidential')}>機密錄：雙城</button>
       <button className="menubutton illumination" onClick={() => changeContent('illumination')}>啟示</button>
@@ -325,6 +430,8 @@ function ChineseMenu({ setPage }) {
     </>
   );
 }
+
+
 
 
 function PageIndicator({ page, language, setPage }) {
@@ -515,6 +622,7 @@ Kat Suryna is an international figurative artist with a background in academic p
         <a href="www.miss-wong.com" target="_blank">www.miss-wong.com</a>
         <p>Butterflies on the Wheel hails from a cruel imagery – the butterflies flew into a blender and broke their wings. The artwork aims to experiment with videography regarding different forms of presentation through interaction with space. Wong videotaped the cityscape of Hong Kong, and shattered the moving images into broken-down frames. She then projected the images onto her own living room wall. The polygonal and limited space generated multiple reflections, resulting in the fragmentalization of images. It seems to critique the fractured conditions of life caused by the deteriorating spatial capitalization in the city, or perhaps contemplates the relationship between women and the imagery of claustrophobia that Wong has also explored.
 Elaine Wong explores and unveils the manifolds of daily encounters and inner conditions. She regards her practice as an investigation of the potentials of art beyond representation, its relation to sensation, documentation and experience. Her works have been shown internationally, 107 Projects (Australia), the Hong Kong Heritage Museum, Oi! Street Art Space (Hong Kong), EXIS Korea, and Poland Szczecin European Film Festival.</p>
+<p id="manual">Click and drag, or zoom the image below to look around in Wong's living room.</p>
 <iframe className="butterfliesframe" frameBorder="no" src="/english/butterflies_en.htm"></iframe>
         </>
   
