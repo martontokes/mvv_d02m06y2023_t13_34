@@ -6,6 +6,7 @@ export default function App() {
   const [language, setLanguage] = useState('');
   const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
+  const [isBurger, setBurger] = useState(false);
 
   let componentToRender;
 
@@ -88,6 +89,8 @@ let conditionalMenu;
 if (document.getElementById("content") != null && document.getElementById("content").style.opacity == 1 && isWelcome == true) {
   document.getElementById("content").style.opacity = 0;
 }
+
+
   
 
   if (isMobile) {
@@ -96,7 +99,7 @@ if (document.getElementById("content") != null && document.getElementById("conte
         <Header language={language} />
 
         <Content />
-        <PageIndicator language={language} />
+        <PageIndicator page={page} setPage={setPage} language={language} />
       </>
     );
   } else {
@@ -111,6 +114,7 @@ if (document.getElementById("content") != null && document.getElementById("conte
   return (
     <>
     <div id="content">
+
       {conditionalMenu}
   
       <div id="contentToFade">
@@ -120,6 +124,7 @@ if (document.getElementById("content") != null && document.getElementById("conte
     </>
   );
 }
+
 
 function Header({ language }) {
   if (language === "english") {
@@ -140,7 +145,7 @@ function Header({ language }) {
         <h1 id="chwelc" className="headerinline" className="welcometitle">
           虛擬都會
         </h1>
-        <h5 id="chsub" className="headerinline"  className="welcomesubtitle">
+        <h5 id="chsub" className="headerinline" className="welcomesubtitle">
           來自香港的線上展覽
         </h5>
 
@@ -322,8 +327,7 @@ function ChineseMenu({ setPage }) {
 }
 
 
-
-function PageIndicator({ page, language }) {
+function PageIndicator({ page, language, setPage }) {
 
   if (language == 'english') { 
 
@@ -332,6 +336,8 @@ function PageIndicator({ page, language }) {
       <>
         <div id="pageindicator">
           <div id="pageindicators">
+            <img className="indicator indicatorActive" src="/indicator.svg"></img>
+            <img className="indicator" src="/indicator.svg"></img>
             <img className="indicator" src="/indicator.svg"></img>
             <img className="indicator" src="/indicator.svg"></img>
             <img className="indicator" src="/indicator.svg"></img>
@@ -364,8 +370,11 @@ function PageIndicator({ page, language }) {
 }
 
 
+//   if (isBurger != true) {}
 
 function Content( { page, language } ) {
+
+
 
   if (language === 'english') {
 
@@ -437,10 +446,10 @@ Peter Nelson is a visual artist and academic working at the intersection of land
 <button className="xp"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1180213005&searchtext=Autosave%3A+Redoubt" target="_blank"><img src="/enarbut.svg"></img></a></button>
 </div>
 <div id="asytcontainer">
-  <iframe className='autosaveVid' src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen="" frameborder="no"/>
-  <iframe className='autosaveVid' src="https://www.youtube.com/embed/XvERO-f8wfE" allowFullScreen="" frameborder="no"/>
-  <iframe className='autosaveVid' src="https://www.youtube.com/embed/S1zhsv44qlU" allowFullScreen="" frameborder="no"/>
-  <iframe className='autosaveVid' src="https://www.youtube.com/embed/hW2qJiNeotc" allowFullScreen="" frameborder="no"/>
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen="" frameBorder="no"/>
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/XvERO-f8wfE" allowFullScreen="" frameBorder="no"/>
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/S1zhsv44qlU" allowFullScreen="" frameBorder="no"/>
+  <iframe className='autosaveVid' src="https://www.youtube.com/embed/hW2qJiNeotc" allowFullScreen="" frameBorder="no"/>
   </div>
         </>
   

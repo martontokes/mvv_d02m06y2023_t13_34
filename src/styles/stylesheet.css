@@ -15,6 +15,7 @@
     margin-top: 0;
 }
 
+
 #asytcontainer {
 
     width: 100%;
@@ -244,6 +245,14 @@ body {
     margin: 3% 10%;
 }
 
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
 #welcomeContainer {
     width: 100%;
     height: 100%;
@@ -305,8 +314,10 @@ body {
 }
 
 .indicator {
+    opacity: .5;
     height: 2vh;
     width: 5vw;
+    transition: opacity 2s;
 }
 
 #pageindicator {
@@ -315,12 +326,19 @@ body {
     left: 0px;
     bottom: 0px;
     height: 10vh;
-    z-index: 1;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.indicatorActive {
+    opacity: 1 !important; 
+    transition: opacity 2s;
+    height: 2vh;
+    width: 5vw;
+}
+
 
 #pageindicators img {
     padding: 0.5vw;
