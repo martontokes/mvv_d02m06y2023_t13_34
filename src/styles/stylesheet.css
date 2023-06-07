@@ -17,9 +17,7 @@
 
 
 #asytcontainer {
-
     width: 100%;
-
 }
 
 #burgerMenuContent {
@@ -53,6 +51,14 @@
     margin: auto;
 }
 
+#csgobuttonimgeng {
+    width: 30%;
+}
+
+#arbuttonimgeng {
+    width: 30%;
+}
+
 .autosaveVid {
     display: block;
     padding-bottom: 100px;
@@ -78,7 +84,6 @@
 #buddhacontainer {
     position: relative;
     margin: auto;
-    width: 500px;
     display: flex;
 }
 
@@ -86,7 +91,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 400px;
+    width: 100px;
     transition: opacity 5s;
 }
 
@@ -105,6 +110,12 @@
 
 }
 
+#mobileBody {
+    opacity: 0;
+    transition: opacity 2s;
+
+
+}
 
 .upperMenuZh {
     display: grid;
@@ -112,6 +123,12 @@
     grid-template-columns: auto 1fr;
     margin-bottom: 3rem;
 
+}
+
+#mobileContent {
+    margin: 0 10%;
+    position: absolute;
+    top: 34.290854572713645vw;
 }
 
 .butterfliesframe {
@@ -181,6 +198,7 @@
 .artistflex {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
 }
 
@@ -341,16 +359,47 @@ body {
 
 }
 
-.mheader {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
+.burgerbuttoncontainer {
     position: fixed;
-    width: 100vw;
-    left: 0px;
-    top: 0px;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    padding-left: 10vw;
-    z-index: 2;
+    right: 10%;
+    top: 5%;
+}
+
+.mheader {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
+    position: fixed;
+    z-index: 3;
+    padding: 5% 10%;
+    width: 100%;
+
+}
+
+.indicator {
+    height: 1.5px;
+    width: 15px;
+    opacity: 30%;
+    background-color: white;
+}
+
+.indicatorActive {
+    opacity: 100% !important;
+    transition: opacity 2s;
+}
+
+#pageindicator {
+    position: fixed;
+    bottom: 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw;
+}
+
+.header h5 {
+    font-size: 0.2rem !important;
 }
 
 .headerinline {
@@ -359,53 +408,36 @@ body {
 
 
 #burgerbutton {
-    position: fixed;
-    right: 10vw;
-    top: 6vh;
-    z-index: 2;
-
+    transition: opacity 0.25s;
 }
 
-.indicator {
-    opacity: .5;
-    height: 2vh;
-    width: 5vw;
-    transition: opacity 2s;
+button {
+    background: black;
+    border-color: transparent;
 }
 
-#pageindicator {
-    background-color: black;
+
+
+#mobileMenuContainer {
     position: fixed;
-    left: 0px;
-    bottom: 0px;
-    height: 10vh;
-    width: 100vw;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.25s;
 }
 
-.indicatorActive {
-    opacity: 1 !important; 
-    transition: opacity 2s;
-    height: 2vh;
-    width: 5vw;
-}
 
 
-#pageindicators img {
-    padding: 0.5vw;
 
 
-}
 
-#burgerbutton img {
-    width: 6.621875000000001vw;
-}
 
-#mobillogoen {
-    width: 60vw;
-}
+/*
 
 @media screen and (min-width: 600px) {
 
@@ -428,24 +460,7 @@ body {
     font-size: 30px;
 }
 
-.enterbutton {
-    opacity: inherit;
-    transition: opacity 2s;
-    margin-top: 10px;
-    font-size: 36px;
-    background: black;
-    border-color: transparent;
-    padding: 0;
-    margin: 0; 
-    margin-top: 10px;
 
-}
-
-.enterbutton img {
-    opacity: inherit;
-    transition: inherit;
-    height: 80px;
-}
 
 }
 
@@ -492,3 +507,5 @@ body {
     }
     
     }
+
+    */

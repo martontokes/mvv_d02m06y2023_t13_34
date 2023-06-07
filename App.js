@@ -8,19 +8,30 @@ export default function App() {
   const [isWelcome, setWelcome] = useState(true);
   const [isBurger, setBurger] = useState(false);
 
-  let componentToRender;
+  let mobileVersionRender;
+  let desktopVersionRender;
+  let render;
 
   if (isWelcome) {
-    componentToRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
+    desktopVersionRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
+    mobileVersionRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
-    componentToRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage} isBurger={isBurger} setBurger={setBurger}/>;
+    desktopVersionRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage} isBurger={isBurger} setBurger={setBurger}/>;
+    mobileVersionRender = <MobileVersion page={page} language={language} setBurger={setBurger} isBurger={isBurger} setPage={setPage}/>;
   }
+
+  if (isMobile == false) {
+    render = desktopVersionRender;
+  } else if (isMobile == true) {
+    render = mobileVersionRender;
+  }
+
 
   return (
 
     <>
-      <MobileMenu isBurger={isBurger} setBurger={setBurger} setPage={setPage} language={language} />
-      {componentToRender}
+
+      {render}
       <iframe id="confreciframe" frameborder="no" />
     </>
   );
@@ -36,7 +47,7 @@ function WelcomeScreen({ setWelcome, setLanguage }) {
 
       setTimeout(() => {
       setWelcome(false);
-      setTimeout(() => {document.getElementById("content").style.opacity = 1;}, 500)
+      setTimeout(() => { if (!isMobile) { document.getElementById("content").style.opacity = 1;} else { document.getElementById("mobileBody").style.opacity = 1}}, 500)
  
     }, 2000);
     };
@@ -87,26 +98,15 @@ function ContentScreen({ page, language, setPage, setLanguage, isWelcome, isBurg
 
 let conditionalMenu;
 
-if (document.getElementById("content") != null && document.getElementById("content").style.opacity == 1 && isWelcome == true) {
-  document.getElementById("content").style.opacity = 0;
-}
-
-
-  if (isMobile) {
-    conditionalMenu = (
-      <>
-        <Header isBurger={isBurger} setBurger={setBurger} language={language} />
-        <PageIndicator page={page} setPage={setPage} language={language} />
-      </>
-    );
-  } else {
+    if (document.getElementById("content") != null && document.getElementById("content").style.opacity == 1 && isWelcome == true) {
+      document.getElementById("content").style.opacity = 0;
+    }
 
     if (language === 'chinese') {
       conditionalMenu = <><ChineseMenu setPage={setPage} /><LanguageButton setPage={setPage} language={language} page={page} setLanguage={setLanguage} /></>;
     } else if (language === 'english') {
       conditionalMenu = <><EnglishMenu setPage={setPage} /><LanguageButton setPage={setPage} language={language} page={page} setLanguage={setLanguage} /></>;
     }
-  }
 
   return (
     <>
@@ -120,206 +120,203 @@ if (document.getElementById("content") != null && document.getElementById("conte
     </div>
     </>
   );
+
 }
 
-function MobileMenu({language, setPage, isBurger, setBurger}) {
+
+function MobileMenuZh({setBurger, isBurger, setPage}) {
+
+      return (
+      <>
+      <div id="mobileMenuContainer">
+      <button id="zhmenuleft" className="menubutton curatorial" onClick={() => changeContentMobile(0, 'curatorial', setBurger, isBurger, setPage)}>策展論</button>
+      <button className="menubutton autosave" onClick={() => changeContentMobile(2, 'autosave', setBurger, isBurger, setPage)}>自動存檔：堡壘</button>
+      <button className="menubutton confidential" onClick={() => changeContentMobile(3, 'confidential', setBurger, isBurger, setPage)}>機密錄：雙城</button>
+      <button className="menubutton illumination" onClick={() => changeContentMobile(4, 'illumination', setBurger, isBurger, setPage)}>啟示</button>
+      <button className="menubutton butterflies" onClick={() => changeContentMobile(5, 'butterflies', setBurger, isBurger, setPage)}>黃淑賢</button>
+      <button className="menubutton domestik" onClick={() => changeContentMobile(6, 'domestik', setBurger, isBurger, setPage)}>家居/公共</button>
+      </div>
+      </>
+      )
+
+}
+
+function MobileMenuEng({setBurger, isBurger, setPage}) {
+
+      return (
+      <>
+      <div id="mobileMenuContainer">
+      <button className="menubutton curatorial" onClick={() => changeContentMobile(0, 'curatorial', setBurger, isBurger, setPage)}>curatorial statement</button>
+      <button className="menubutton essay" onClick={() => changeContentMobile(1, 'essay', setBurger, isBurger, setPage)}>essay about the exhibition</button>
+      <button className="menubutton autosave" onClick={() => changeContentMobile(2, 'autosave', setBurger, isBurger, setPage)}>Autosave: Redoubt</button>
+      <button className="menubutton confidential" onClick={() => changeContentMobile(3, 'confidential', setBurger, isBurger, setPage)}>Confidential Records: Dual Metropolitans</button>
+      <button className="menubutton illumination" onClick={() => changeContentMobile(4, 'illumination', setBurger, isBurger, setPage)}>Illumination</button>
+      <button className="menubutton butterflies" onClick={() => changeContentMobile(5, 'butterflies', setBurger, isBurger, setPage)}>Butterflies on the Wheel</button>
+      <button className="menubutton domestik" onClick={() => changeContentMobile(6, 'domestik', setBurger, isBurger, setPage)}>Domestik/Publik</button>
+      </div>
+      </>
+      )
+}
 
 
+function changeContentMobile(paginator, num, setter, state, pageSet) {
 
-  function changeContent(num) {
+  pageSet(num);
+  window.scrollTo(0, 0);
 
-    if (isBurger == false) {
+  var indicators = document.getElementsByClassName("indicator"); 
+  for (let i = 0; i < indicators.length; i++) {
+    indicators[i].classList.remove("indicatorActive");
+  }
 
-      var mobileMenu = document.getElementsByClassName("mobilemenu")[0];
-      mobileMenu.getElementById("contentToFade").style.opacity = 0;
-      setTimeout(() => {
-
-      mobileMenu.classList.remove("mobilemenu");
-      mobileMenu.classList.add("mobilemenuActive");
+  indicators[paginator].classList.add("indicatorActive");
 
 
-      }, 2000)
-
-      setBurger(true);
-
-      } else if (isBurger == true) {
-
-      mobileMenu = document.getElementsByClassName("mobilemenuActive")[0];
-      mobileMenu.classList.remove("mobilemenuActive"); 
-      mobileMenu.classList.add("mobilemenu");
-      setBurger(false);
-
-      }
-
-   
-
-    let menubuttons = document.getElementsByClassName("menubutton");
-    for (let i = 0; i < menubuttons.length; i++ ) {
-      menubuttons[i].classList.remove("menuButtonActive"); 
-    }
-
-    menubuttons = document.getElementsByClassName(num);
-    for (let v = 0; v < menubuttons.length; v++ ) {
-      menubuttons[v].classList.add("menuButtonActive");
-    }
-
-    setTimeout(() => {
-    setPage(num);
-    setTimeout(  () => { document.getElementById("contentToFade").style.opacity = 1; }, 500);
+  let menubuttons = document.getElementsByClassName("menubutton");
+  for (let i = 0; i < menubuttons.length; i++ ) {
+    menubuttons[i].classList.remove("menuButtonActive"); 
+  }
  
-     }, 2000);
+  menubuttons = document.getElementsByClassName(num);
+  for (let v = 0; v < menubuttons.length; v++ ) {
+    menubuttons[v].classList.add("menuButtonActive");
+  }
 
-   }
+  document.getElementById("mobileMenuContainer").style.opacity = 0;
+    setTimeout(() => { 
+        document.getElementById("mobileMenuContainer").style.display = "flex";
+        document.getElementById("mobileContent").style.opacity = 1;  
+        document.getElementById("burgerbutton").style.opacity = 1; 
+        setter(!state);
+      }, 250);  
 
-    if (language = "english") {
+}
+
+
+function MobileMenu({page, setPage, language, setLanguage, setBurger, isBurger}) {
+
+  let mobileMenu;
+
+  if (language == 'english') {
+    mobileMenu =  <MobileMenuEng setPage={setPage} setBurger={setBurger} isBurger={isBurger} />;
+  } else {
+    mobileMenu = <MobileMenuZh setPage={setPage} setBurger={setBurger} isBurger={isBurger} />
+  }
+
+  return (
+    <>
+      {mobileMenu}
+    </>
+  )
+
+}
+
+
+function MobileVersion({language, page, setPage, setLanguage, setBurger, isBurger}) {
+  
+  return (
+
+    <div id="mobileBody">
+    <Header setBurger={setBurger} isBurger={isBurger} language={language} />
+    <MobileMenu page={page} setPage={setPage} language={language} setLanguage={setLanguage} setBurger={setBurger} isBurger={isBurger}/>
+    <div id="mobileContent">
+    <Content page={page} language={language} />
+    </div>
+    <PageIndicator language={language} page={page} setPage={setPage} />
+    </div>
+
+  )
+
+}
+
+
+function Header({ language, isBurger, setBurger }) {
+
+  if (language === "english") {
+    
+    return (
+      <>
+        <div className="mheader">
+        <div className="headerlogocontainer">
+        <h1 id="engwelc" className="headerinline" className="welcometitle">metro via virtual</h1>
+        <h5 id="engsub" className="headerinline" className="welcomesubtitle">a virtual exhibition from Hong Kong</h5>
+        </div>
+        <div className="burgerbuttoncontainer">
+        <BurgerMenuButton setBurger={setBurger} isBurger={isBurger} />
+        </div>
+        </div>
+      </>
+    );
+
+  } else {
 
     return (
+      <>
+        <div className="mheader">
+        <div className="headerlogocontainer">
+        <h1 id="chwelc" className="headerinline" className="welcometitle">虛擬都會</h1>
+        <h5 id="chsub" className="headerinline" className="welcomesubtitle">來自香港的線上展覽</h5>
+        </div>
+        <div className="burgerbuttoncontainer">
+        <BurgerMenuButton setBurger={setBurger} isBurger={isBurger} />
+        </div>
+        </div>
+      </>
+    );
+  }
+}
 
-      <div className='mobilemenu'>
-      <button className="menubutton curatorial" onClick={() => changeContent('curatorial')}>curatorial statement</button>
-      <button className="menubutton essay" onClick={() => changeContent('essay')}>essay about the exhibition</button>
-      <button className="menubutton autosave" onClick={() => changeContent('autosave')}>Autosave: Redoubt</button>
-      <button className="menubutton confidential" onClick={() => changeContent('confidential')}>Confidential Records: Dual Metropolitans</button>
-      <button className="menubutton illumination" onClick={() => changeContent('illumination')}>Illumination</button>
-      <button className="menubutton butterflies" onClick={() => changeContent('butterflies')}>Butterflies on the Wheel</button>
-      <button className="menubutton domestik" onClick={() => changeContent('domestik')}>Domestik/Publik</button>
-      </div>
+function BurgerMenuButton({isBurger, setBurger}) {
 
+  if (!isBurger) {
+
+    return (
+    <>
+    <button id="burgerbutton" onClick={() => {burgerMenuToggle(setBurger, isBurger)}}><img src="burgerbutton.svg"></img></button>
+    </>
     )
-
 
     } else {
 
     return (
-
-      <div className='mobilemenu'>
-      <button id="zhmenuleft" className="menubutton curatorial" onClick={() => changeContent('curatorial')}>策展論</button>
-      <button className="menubutton autosave" onClick={() => changeContent('autosave')}>自動存檔：堡壘</button>
-      <button className="menubutton confidential" onClick={() => changeContent('confidential')}>機密錄：雙城</button>
-      <button className="menubutton illumination" onClick={() => changeContent('illumination')}>啟示</button>
-      <button className="menubutton butterflies" onClick={() => changeContent('butterflies')}>黃淑賢</button>
-      <button className="menubutton domestik" onClick={() => changeContent('domestik')}>家居/公共</button>
-      </div>
-      
+    <>
+    <button id="burgerbutton" onClick={() => {burgerMenuToggle(setBurger, isBurger)}}><img src="x.svg"></img></button>
+    </>
     )
+
   }
 }
 
-
-
-
-function Header({ language, isBurger, setBurger }) {
-  if (language === "english") {
-    return (
-      <>
-        <div className="mheader">
-        <img id="mobillogoen" src="/mobillogoen.svg"></img>
-        <BurgerMenu isBurger={isBurger} setBurger={setBurger}/>
-        </div>
-
-
-      </>
-    );
-  } else {
-    return (
-      <>
-              <div className="mheader">
-        <h1 id="chwelc" className="headerinline" className="welcometitle">
-          虛擬都會
-        </h1>
-        <h5 id="chsub" className="headerinline" className="welcomesubtitle">
-          來自香港的線上展覽
-        </h5>
-
-        </div>
-        <BurgerMenu isBurger={isBurger} setBurger={setBurger} />
-      </>
-    );
-  }
-}
-
-
-
-function LanguageButton({ language, setLanguage, setPage, page }) {
-
-  const setLang = (lang) => {
-    document.getElementById("content").style.opacity = 0;
-
-    setTimeout(() => {
-      setLanguage(lang);
-
-      setTimeout(() => {
-        document.getElementById("content").style.opacity = 1;
-    
-      }, 500);
-
-      let menubuttons = document.getElementsByClassName("menubutton");
-
-      for (let i = 0; i < menubuttons.length; i++ ) {
-        menubuttons[i].classList.remove("menuButtonActive"); 
-      }
-
-      setTimeout(() => { menubuttons = document.getElementsByClassName(page);
-        
-        if (menubuttons[0] === undefined) {
-
-        setPage("curatorial");
-        menubuttons = document.getElementsByClassName("menubutton");
-        menubuttons[0].classList.add("menuButtonActive");
-
-      } else {
-        menubuttons[0].classList.add("menuButtonActive"); 
-      }
-      
-      }, 200);
-
-        }, 2000);
-      };
-
-  let buttonElement = null;
-
-  if (language === 'chinese') {
-    buttonElement = (
-      <button className="menubutton languageButton" onClick={() => setLang('english')}>
-        English
-      </button>
-    );
-  } else if (language === 'english') {
-    buttonElement = (
-      <button className="menubutton languageButton" onClick={() => setLang('chinese')}>
-        中國人
-      </button>
-    );
-  }
-
-  return <>{buttonElement}</>;
-}
-
-
-function BurgerMenu({isBurger, setBurger}) {
-
-  const toggleMobileMenu = () => {
-    console.log(isBurger);
-      if (isBurger == false) {
-        var mobileMenu = document.getElementsByClassName("mobilemenu")[0];
- 
-        mobileMenu.classList.remove("mobilemenu");
-        mobileMenu.classList.add("mobilemenuActive");
-        setBurger(true);
-
-        } else if (isBurger == true) {
-        mobileMenu = document.getElementsByClassName("mobilemenuActive")[0];
-        mobileMenu.classList.remove("mobilemenuActive"); 
-        mobileMenu.classList.add("mobilemenu");
-        setBurger(false);
-        }
-  }
-
-  return (
-    <button id="burgerbutton" onClick={toggleMobileMenu}><img src="/burgerbutton.svg"></img></button>
-  )
+function burgerMenuToggle(setter, state) {
   
+  document.getElementById("burgerbutton").style.opacity = 0;
+
+  if (!state) {
+  document.getElementById("mobileContent").style.opacity = 0;
+  }
+
+  setTimeout(() => { 
+    
+    if (!state) {
+    setter(!state);
+    document.getElementById("mobileMenuContainer").style.display = "flex";
+    document.getElementById("mobileMenuContainer").style.opacity = 1;    
+    document.getElementById("burgerbutton").style.opacity = 1;
+    } else {
+    document.getElementById("mobileMenuContainer").style.opacity = 0;
+    setTimeout(() => { 
+        document.getElementById("mobileMenuContainer").style.display = "flex";
+        document.getElementById("mobileContent").style.opacity = 1;  
+        document.getElementById("burgerbutton").style.opacity = 1; 
+        setter(!state);
+      }, 250);  
+    }
+
+  }, 250);
+
 }
+
+
 
 
 function EnglishMenu({ setPage }) {
@@ -372,9 +369,6 @@ function EnglishMenu({ setPage }) {
     </>
   );
 }
-
-
-
 
 
 function ChineseMenu({ setPage }) {
@@ -434,6 +428,7 @@ function ChineseMenu({ setPage }) {
 
 
 
+
 function PageIndicator({ page, language, setPage }) {
 
   if (language == 'english') { 
@@ -442,15 +437,14 @@ function PageIndicator({ page, language, setPage }) {
 
       <>
         <div id="pageindicator">
-          <div id="pageindicators">
-            <img className="indicator indicatorActive" src="/indicator.svg"></img>
-            <img className="indicator" src="/indicator.svg"></img>
-            <img className="indicator" src="/indicator.svg"></img>
-            <img className="indicator" src="/indicator.svg"></img>
-            <img className="indicator" src="/indicator.svg"></img>
-            <img className="indicator" src="/indicator.svg"></img>
-            <img className="indicator" src="/indicator.svg"></img>
-          </div>
+
+            <div className="indicator indicatorActive" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
         </div>
       </>
   
@@ -464,11 +458,13 @@ function PageIndicator({ page, language, setPage }) {
 
     <>
         <div id="pageindicator">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+
+            <div className="indicator indicatorActive" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
+            <div className="indicator" src="/indicator.svg"></div>
         </div>
     </>
 
@@ -476,8 +472,6 @@ function PageIndicator({ page, language, setPage }) {
 
 }
 
-
-//   if (isBurger != true) {}
 
 function Content( { page, language } ) {
 
@@ -549,8 +543,8 @@ Alexis Mailles produces hybrid installations that border the frontiers of Arte P
 Peter Nelson is a visual artist and academic working at the intersection of landscape theory and computer games. Originally trained in painting and drawing, Nelson currently produces exhibitions across a number of media, from painting and drawing, to animation, 3D printed sculpture and interactive game-based systems. He has held numerous group and solo exhibitions, including projects with HanArt TZ Gallery (Hong Kong), The National Palace Museum (Taiwan), The Sichuan Fine Art Academy Museum (Chongqing) and the K11 Art Foundation (Hong Kong). He is an Assistant Professor at Hong Kong Baptist University.</p>
 <div id="armidmenu">
 <img className="arlogo" src="/arlogo.png"/>
-<button className="xp"><a href="https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/" target="_blank"><img src="/encsbut.svg"></img></a></button>
-<button className="xp"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1180213005&searchtext=Autosave%3A+Redoubt" target="_blank"><img src="/enarbut.svg"></img></a></button>
+<button className="xp"><a href="https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/" target="_blank"><img id="csgobuttonimgeng" src="/encsbut.svg"></img></a></button>
+<button className="xp"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1180213005&searchtext=Autosave%3A+Redoubt" target="_blank"><img id="arbuttonimgeng" src="/enarbut.svg"></img></a></button>
 </div>
 <div id="asytcontainer">
   <iframe className='autosaveVid' src="https://www.youtube.com/embed/I3Mr4dbVDy4" allowFullScreen="" frameBorder="no"/>
@@ -918,4 +912,63 @@ async function buddhachanger() {
       }
     }
   }, 5000);
+}
+
+
+
+
+
+function LanguageButton({ language, setLanguage, setPage, page }) {
+
+  const setLang = (lang) => {
+    document.getElementById("content").style.opacity = 0;
+
+    setTimeout(() => {
+      setLanguage(lang);
+
+      setTimeout(() => {
+        document.getElementById("content").style.opacity = 1;
+    
+      }, 500);
+
+      let menubuttons = document.getElementsByClassName("menubutton");
+
+      for (let i = 0; i < menubuttons.length; i++ ) {
+        menubuttons[i].classList.remove("menuButtonActive"); 
+      }
+
+      setTimeout(() => { menubuttons = document.getElementsByClassName(page);
+        
+        if (menubuttons[0] === undefined) {
+
+        setPage("curatorial");
+        menubuttons = document.getElementsByClassName("menubutton");
+        menubuttons[0].classList.add("menuButtonActive");
+
+      } else {
+        menubuttons[0].classList.add("menuButtonActive"); 
+      }
+      
+      }, 200);
+
+        }, 2000);
+      };
+
+  let buttonElement = null;
+
+  if (language === 'chinese') {
+    buttonElement = (
+      <button className="menubutton languageButton" onClick={() => setLang('english')}>
+        English
+      </button>
+    );
+  } else if (language === 'english') {
+    buttonElement = (
+      <button className="menubutton languageButton" onClick={() => setLang('chinese')}>
+        中國人
+      </button>
+    );
+  }
+
+  return <>{buttonElement}</>;
 }
