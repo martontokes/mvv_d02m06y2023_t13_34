@@ -10,6 +10,8 @@ export default function App() {
   const [page, setPage] = useState('curatorial');
   const [isWelcome, setWelcome] = useState(true);
   const [isBurger, setBurger] = useState(false);
+  
+  var isInitiation = true;
 
   let mobileVersionRender;
   let desktopVersionRender;
@@ -20,7 +22,7 @@ export default function App() {
     mobileVersionRender = <WelcomeScreen setWelcome={setWelcome} setLanguage={setLanguage} />;
   } else {
     desktopVersionRender = <ContentScreen language={language} setPage={setPage} page={page} setLanguage={setLanguage} isBurger={isBurger} setBurger={setBurger}/>;
-    mobileVersionRender = <MobileVersion page={page} language={language} setBurger={setBurger} isBurger={isBurger} setPage={setPage}/>;
+    mobileVersionRender = <MobileVersion page={page} setLanguage={setLanguage} language={language} setBurger={setBurger} isBurger={isBurger} setPage={setPage}/>;
   }
 
   if (isMobile == false) {
@@ -28,6 +30,7 @@ export default function App() {
   } else if (isMobile == true) {
     render = mobileVersionRender;
   }
+
 
 
   return (
@@ -43,6 +46,8 @@ export default function App() {
   }
 
 function WelcomeScreen({ setWelcome, setLanguage }) {
+
+    
 
     const enterSite = () => {
 
@@ -127,24 +132,38 @@ let conditionalMenu;
 }
 
 
-function MobileMenuZh({setBurger, isBurger, setPage}) {
+function MobileMenuZh({setBurger, isBurger, setPage, setLanguage}) {
+
+  const reload = () => {
+
+    document.getElementById("__next").style.opacity = 0;
+
+    setTimeout(() => { window.location.reload(); }, 4000);
+
+    
+  };
 
       return (
       <>
       <div id="mobileMenuContainer">
-      <button id="zhmenuleft" className="menubutton curatorial" onClick={() => changeContentMobile(0, 'curatorial', setBurger, isBurger, setPage)}>策展論</button>
+      <button className="menubutton curatorial" onClick={() => changeContentMobile(0, 'curatorial', setBurger, isBurger, setPage)}>策展論</button>
       <button className="menubutton autosave" onClick={() => changeContentMobile(2, 'autosave', setBurger, isBurger, setPage)}>自動存檔：堡壘</button>
       <button className="menubutton confidential" onClick={() => changeContentMobile(3, 'confidential', setBurger, isBurger, setPage)}>機密錄：雙城</button>
       <button className="menubutton illumination" onClick={() => changeContentMobile(4, 'illumination', setBurger, isBurger, setPage)}>啟示</button>
       <button className="menubutton butterflies" onClick={() => changeContentMobile(5, 'butterflies', setBurger, isBurger, setPage)}>黃淑賢</button>
       <button className="menubutton domestik" onClick={() => changeContentMobile(6, 'domestik', setBurger, isBurger, setPage)}>家居/公共</button>
+      <button className="menubutton domestik" onClick={() => reload()}>Welcome Screen</button>
       </div>
       </>
       )
-
 }
 
-function MobileMenuEng({setBurger, isBurger, setPage}) {
+
+
+
+
+
+function MobileMenuEng({setBurger, isBurger, setPage, setLanguage, language}) {
 
       return (
       <>
@@ -207,9 +226,9 @@ function MobileMenu({page, setPage, language, setLanguage, setBurger, isBurger})
   let mobileMenu;
 
   if (language == 'english') {
-    mobileMenu =  <MobileMenuEng setPage={setPage} setBurger={setBurger} isBurger={isBurger} />;
+    mobileMenu =  <MobileMenuEng setPage={setPage} setBurger={setBurger} isBurger={isBurger} setLanguage={setLanguage}/>;
   } else {
-    mobileMenu = <MobileMenuZh setPage={setPage} setBurger={setBurger} isBurger={isBurger} />
+    mobileMenu = <MobileMenuZh setPage={setPage} setBurger={setBurger} isBurger={isBurger} setLanguage={setLanguage}/>
   }
 
   return (
@@ -224,31 +243,54 @@ function MobileMenu({page, setPage, language, setLanguage, setBurger, isBurger})
 
 function MobileVersion({language, page, setPage, setLanguage, setBurger, isBurger}) {
 
-  const pages = ['curatorial', 'essay', 'autosave', 'confidential', 'illumination', 'butterflies', 'domestik'];
+  if (language == 'english') {
+  var pages = ['curatorial', 'essay', 'autosave', 'confidential', 'illumination', 'butterflies', 'domestik'];
+  } else if (language == 'chinese') {
+  var pages = ['curatorial', 'autosave', 'confidential', 'illumination', 'butterflies', 'domestik']; 
+  }
 
   function onSwipeLeft() {
-  if (pageNum < 6) { pageNum += 1;
-  document.getElementById("mobileContent").style.opacity = 0;
-
-  var indicators = document.getElementsByClassName("indicator"); 
-  for (let i = 0; i < indicators.length; i++) {
-    indicators[i].classList.remove("indicatorActive");
+    if (pageNum < 6 && language == "english") { 
+      pageNum += 1;
+      document.getElementById("mobileContent").style.opacity = 0;
+    
+      var indicators = document.getElementsByClassName("indicator"); 
+      for (let i = 0; i < indicators.length; i++) {
+        indicators[i].classList.remove("indicatorActive");
+      }
+      indicators[pageNum].classList.add("indicatorActive");
+    
+      setTimeout(() => { 
+        setPage(pages[pageNum]); 
+        document.getElementById("mobileContent").style.opacity = 1;
+      }, 500);  
+    } else if (pageNum < 5 && language == 'chinese') {
+      pageNum += 1;
+      document.getElementById("mobileContent").style.opacity = 0;
+    
+      var indicators = document.getElementsByClassName("indicator"); 
+      for (let i = 0; i < indicators.length; i++) {
+        indicators[i].classList.remove("indicatorActive");
+      }
+      indicators[pageNum].classList.add("indicatorActive");
+    
+      setTimeout(() => { 
+        setPage(pages[pageNum]); 
+        document.getElementById("mobileContent").style.opacity = 1;
+      }, 500);  
+    }
   }
-  indicators[pageNum].classList.add("indicatorActive");
-
-  setTimeout(() => { setPage(pages[pageNum]); document.getElementById("mobileContent").style.opacity = 1;}, 500);  
-  }
-}
+  
 
   function onSwipeRight() {
     if (pageNum > 0) { pageNum -= 1;
       document.getElementById("mobileContent").style.opacity = 0;
 
       var indicators = document.getElementsByClassName("indicator"); 
-  for (let i = 0; i < indicators.length; i++) {
-    indicators[i].classList.remove("indicatorActive");
-  }
-  indicators[pageNum].classList.add("indicatorActive");
+      for (let i = 0; i < indicators.length; i++) {
+      indicators[i].classList.remove("indicatorActive");
+     }
+        indicators[pageNum].classList.add("indicatorActive");
 
       setTimeout(() => { setPage(pages[pageNum]); document.getElementById("mobileContent").style.opacity = 1;}, 500);  
       }
@@ -1019,3 +1061,5 @@ function LanguageButton({ language, setLanguage, setPage, page }) {
 
   return <>{buttonElement}</>;
 }
+
+
