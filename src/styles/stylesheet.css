@@ -125,10 +125,19 @@
 
 }
 
+#___next {
+    overflow: hidden;
+}
+
+#mobileBody {
+
+}
+
 #mobileContent {
     margin: 0 10%;
     position: absolute;
     top: 34.290854572713645vw;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .butterfliesframe {

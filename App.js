@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
+import { useSwipeable } from 'react-swipeable';
+
+var pageNum = 0;
 
 export default function App() {
 
@@ -164,6 +167,8 @@ function changeContentMobile(paginator, num, setter, state, pageSet) {
   pageSet(num);
   window.scrollTo(0, 0);
 
+  const pages = ['curatorial', 'essay', 'autosave', 'confidential', 'illumination', 'butterflies', 'domestik'];
+
   var indicators = document.getElementsByClassName("indicator"); 
   for (let i = 0; i < indicators.length; i++) {
     indicators[i].classList.remove("indicatorActive");
@@ -184,11 +189,15 @@ function changeContentMobile(paginator, num, setter, state, pageSet) {
 
   document.getElementById("mobileMenuContainer").style.opacity = 0;
     setTimeout(() => { 
-        document.getElementById("mobileMenuContainer").style.display = "flex";
+        document.getElementById("mobileMenuContainer").style.display = "none";
         document.getElementById("mobileContent").style.opacity = 1;  
         document.getElementById("burgerbutton").style.opacity = 1; 
         setter(!state);
-      }, 250);  
+      }, 250);
+      
+    pageNum = pages.indexOf(num);
+
+
 
 }
 
@@ -212,14 +221,52 @@ function MobileMenu({page, setPage, language, setLanguage, setBurger, isBurger})
 }
 
 
+
 function MobileVersion({language, page, setPage, setLanguage, setBurger, isBurger}) {
-  
+
+  const pages = ['curatorial', 'essay', 'autosave', 'confidential', 'illumination', 'butterflies', 'domestik'];
+
+  function onSwipeLeft() {
+  if (pageNum < 6) { pageNum += 1;
+  document.getElementById("mobileContent").style.opacity = 0;
+
+  var indicators = document.getElementsByClassName("indicator"); 
+  for (let i = 0; i < indicators.length; i++) {
+    indicators[i].classList.remove("indicatorActive");
+  }
+  indicators[pageNum].classList.add("indicatorActive");
+
+  setTimeout(() => { setPage(pages[pageNum]); document.getElementById("mobileContent").style.opacity = 1;}, 500);  
+  }
+}
+
+  function onSwipeRight() {
+    if (pageNum > 0) { pageNum -= 1;
+      document.getElementById("mobileContent").style.opacity = 0;
+
+      var indicators = document.getElementsByClassName("indicator"); 
+  for (let i = 0; i < indicators.length; i++) {
+    indicators[i].classList.remove("indicatorActive");
+  }
+  indicators[pageNum].classList.add("indicatorActive");
+
+      setTimeout(() => { setPage(pages[pageNum]); document.getElementById("mobileContent").style.opacity = 1;}, 500);  
+      }
+  }
+      
+  const handlers = useSwipeable({
+
+      onSwipedLeft: onSwipeLeft,
+      onSwipedRight: onSwipeRight,
+
+  });
+
   return (
 
     <div id="mobileBody">
     <Header setBurger={setBurger} isBurger={isBurger} language={language} />
     <MobileMenu page={page} setPage={setPage} language={language} setLanguage={setLanguage} setBurger={setBurger} isBurger={isBurger}/>
-    <div id="mobileContent">
+    <div id="mobileContent" {...handlers}>
     <Content page={page} language={language} />
     </div>
     <PageIndicator language={language} page={page} setPage={setPage} />
@@ -305,7 +352,7 @@ function burgerMenuToggle(setter, state) {
     } else {
     document.getElementById("mobileMenuContainer").style.opacity = 0;
     setTimeout(() => { 
-        document.getElementById("mobileMenuContainer").style.display = "flex";
+        document.getElementById("mobileMenuContainer").style.display = "none";
         document.getElementById("mobileContent").style.opacity = 1;  
         document.getElementById("burgerbutton").style.opacity = 1; 
         setter(!state);
